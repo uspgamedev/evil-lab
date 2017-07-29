@@ -20,6 +20,7 @@ scale = Vector2( 1, 1 )
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 
+visibility/light_mask = 0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
