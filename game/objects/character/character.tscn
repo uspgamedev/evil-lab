@@ -11,10 +11,16 @@
 texture = ExtResource( 2 )
 offset = Vector2( 0, -120 )
 
+[node name="Collision" parent="."]
+
+transform/pos = Vector2( -3, -112 )
+transform/scale = Vector2( 1.3, 1.02 )
+
 [node name="KeyboardDirectional" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+offset = Vector2( 0, -120 )
 anchor_mode = 1
 rotating = false
 current = true

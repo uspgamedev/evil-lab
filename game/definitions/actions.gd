@@ -1,3 +1,4 @@
-const LIGHT = 0
-const RELOAD = 1
-const INTERACT = 2
+const NONE = 0
+const LIGHT = 1
+const RELOAD = 2
+const INTERACT = 3
