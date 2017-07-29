@@ -10,5 +10,6 @@ func interact(character):
 	tween.interpolate_property(progress_bar, "range/value", 0, 100, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	tween.set_repeat(false)
 	tween.start()
+	character.recharge_power_bank()
 	yield(tween, "tween_complete")
 	progress_bar.hide()
