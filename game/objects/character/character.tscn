@@ -1,26 +1,26 @@
 [gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=2]
-[ext_resource path="res://objects/directed_body_animation.gd" type="Script" id=3]
+[ext_resource path="res://objects/character/character.gd" type="Script" id=2]
+[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=3]
 [ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/character/light.tex" type="Texture" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource/name = "down_idle"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource/name = "down_moving"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource/name = "left_idle"
 length = 1.0
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "values": [ Vector2( -100, -160 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 resource/name = "left_moving"
 length = 1.0
@@ -74,7 +74,7 @@ tracks/1/keys = {
 "values": [ Vector2( -100, -160 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 resource/name = "right_idle"
 length = 1.0
@@ -101,7 +101,7 @@ tracks/1/keys = {
 "values": [ Vector2( 100, -160 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 
 resource/name = "right_moving"
 length = 1.0
@@ -128,56 +128,50 @@ tracks/1/keys = {
 "values": [ Vector2( 100, -160 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 
 resource/name = "up_idle"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 
 resource/name = "up_moving"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -30, -220, 30, -220, 30, -5, -30, -5 )
 
 [node name="Character" instance=ExtResource( 1 )]
 
+script/script = ExtResource( 2 )
+
 [node name="Sprite" parent="."]
 
 transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 offset = Vector2( 0, -60 )
 flip_h = true
 
 [node name="Animation" parent="Sprite"]
 
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-anims/down_idle = SubResource( 2 )
-anims/down_moving = SubResource( 3 )
-anims/left_idle = SubResource( 4 )
-anims/left_moving = SubResource( 5 )
-anims/right_idle = SubResource( 6 )
-anims/right_moving = SubResource( 7 )
-anims/up_idle = SubResource( 8 )
-anims/up_moving = SubResource( 9 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = "down_idle"
-script/script = ExtResource( 3 )
+anims/down_idle = SubResource( 1 )
+anims/down_moving = SubResource( 2 )
+anims/left_idle = SubResource( 3 )
+anims/left_moving = SubResource( 4 )
+anims/right_idle = SubResource( 5 )
+anims/right_moving = SubResource( 6 )
+anims/up_idle = SubResource( 7 )
+anims/up_moving = SubResource( 8 )
 
 [node name="Collision" parent="."]
 
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 
 [node name="KeyboardDirectional" parent="." instance=ExtResource( 4 )]
 

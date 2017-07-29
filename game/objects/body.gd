@@ -12,7 +12,6 @@ const SPEEDLIMIT = ACC * 5
 signal speed_changed(speed)
 
 var speed = Vector2()
-var can_charge = false
 
 onready var animation = get_node("Sprite/Animation")
 
@@ -46,23 +45,3 @@ func pvt_apply_speedlimit(delta):
   if self.speed.length_squared() <= CONST.EPSILON*CONST.EPSILON:
     self.speed.x = 0
     self.speed.y = 0
-
-func _pressing_act(act):
-	if (act == ACT.LIGHT):
-		if (self.get_node("Light2D").is_hidden()):
-			self.get_node("Light2D").show()
-		else:
-			self.get_node("Light2D").hide()
-	if (act == ACT.RELOAD):
-		pass
-	if (act == ACT.INTERACT):
-		if (can_charge):
-			print('you can charge')
-		else:
-			print('you can not charge')
-
-func enable_charging():
-	can_charge = true
-
-func disable_charging():
-	can_charge = false
