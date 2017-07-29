@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://objects/room/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/character/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/character/light.tex" type="Texture" id=3]
 
 [node name="Basic" type="Node2D"]
 
@@ -26,5 +27,28 @@ tile_data = IntArray( -983056, -2147483647, -983055, -2147483647, -983054, -2147
 [node name="Character" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 270, 480 )
+
+[node name="Light2D" type="Light2D" parent="Character"]
+
+transform/pos = Vector2( -120, -150 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+scale = 2.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 3
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 
