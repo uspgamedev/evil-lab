@@ -10,7 +10,9 @@ onready var rooms = {}
 var current_room = null
 
 func _ready():
-	_move_to_room(_load_room(first_room), "Start")
+	var room = get_node("Room")
+	if room == null:
+		_move_to_room(_load_room(first_room), "Start")
 
 func _move_to_room(room, spawn_tag):
 	if self.current_room != null:
