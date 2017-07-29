@@ -12,6 +12,7 @@ const SPEEDLIMIT = ACC * 5
 signal speed_changed(speed)
 
 var speed = Vector2()
+var can_charge = false
 
 onready var animation = get_node("Sprite/Animation")
 
@@ -54,3 +55,14 @@ func _pressing_act(act):
 			self.get_node("Light2D").hide()
 	if (act == ACT.RELOAD):
 		pass
+	if (act == ACT.INTERACT):
+		if (can_charge):
+			print('you can charge')
+		else:
+			print('you can not charge')
+
+func enable_charging():
+	can_charge = true
+
+func disable_charging():
+	can_charge = false
