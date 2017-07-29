@@ -10,10 +10,6 @@ func _ready():
 
 func _fixed_process(dt):
   var dir = DIRS.NONE
-  if Input.is_action_pressed("ui_up"):
-    dir += DIRS.UP
-  if Input.is_action_pressed("ui_down"):
-    dir += DIRS.DOWN
   if Input.is_action_pressed("ui_right"):
     dir += DIRS.RIGHT
   if Input.is_action_pressed("ui_left"):

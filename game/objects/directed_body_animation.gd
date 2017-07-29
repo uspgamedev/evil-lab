@@ -16,6 +16,7 @@ func track_movement(speed):
   var anim = pvt_dirname(dir) + anim_type
   if get_current_animation() != anim:
       play(anim)
+  print(anim)
 
 func pvt_dirface(dir):
   if dir == DIRS.UP:

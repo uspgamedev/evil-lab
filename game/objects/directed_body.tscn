@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://objects/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/directed_body_animation.gd" type="Script" id=2]
+[ext_resource path="res://input/keyboard_actions.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -9,16 +10,6 @@ resource/name = "down_idle"
 length = 1.0
 loop = false
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ 180.0 ]
-}
 
 [sub_resource type="Animation" id=2]
 
@@ -26,16 +17,6 @@ resource/name = "down_moving"
 length = 1.0
 loop = false
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ 180.0 ]
-}
 
 [sub_resource type="Animation" id=3]
 
@@ -44,14 +25,14 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
+tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -61,14 +42,14 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
+tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ 90.0 ]
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -78,14 +59,14 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
+tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ -90.0 ]
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -95,14 +76,14 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
+tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ -90.0 ]
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -111,16 +92,6 @@ resource/name = "up_idle"
 length = 1.0
 loop = false
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [sub_resource type="Animation" id=8]
 
@@ -128,16 +99,6 @@ resource/name = "up_moving"
 length = 1.0
 loop = false
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/rot")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [node name="DirectedBody" instance=ExtResource( 1 )]
 
@@ -159,6 +120,10 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "down_idle"
 script/script = ExtResource( 2 )
+
+[node name="Actions" type="Node2D" parent="."]
+
+script/script = ExtResource( 3 )
 
 [connection signal="speed_changed" from="." to="Sprite/Animation" method="track_movement"]
 
