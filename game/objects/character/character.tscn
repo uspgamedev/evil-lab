@@ -16,6 +16,7 @@ points = Vector2Array( -30, -220, 30, -220, 30, -5, -30, -5 )
 
 texture = ExtResource( 2 )
 offset = Vector2( 0, -120 )
+flip_h = true
 
 [node name="Collision" parent="."]
 
@@ -45,6 +46,7 @@ drag_margin/bottom = 0.2
 
 [node name="Light2D" type="Light2D" parent="."]
 
+transform/pos = Vector2( 100, -160 )
 enabled = true
 editor_only = false
 texture = ExtResource( 4 )
