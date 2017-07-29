@@ -27,5 +27,10 @@ tile_data = IntArray( -983056, 1, -983055, 1, -983054, 1, -983053, 1, -983052, 1
 
 transform/pos = Vector2( 270, 480 )
 
+[node name="Light2D" parent="Character"]
+
+offset = Vector2( -40, -120 )
+mode = 3
+
 
 [editable path="Character"]
