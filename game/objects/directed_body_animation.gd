@@ -5,17 +5,17 @@ const DIRS = preload("res://definitions/directions.gd")
 const CONST = preload("res://definitions/constants.gd")
 
 func track_movement(speed):
-  var dir = DIRS.vec2dir(speed)
-  if dir == DIRS.NONE: return
-  dir = pvt_dirface(dir)
-  var anim_type
-  if speed.length_squared() > CONST.EPSILON*CONST.EPSILON:
-    anim_type = "moving"
-  else:
-    anim_type = "idle"
-  var anim = pvt_dirname(dir) + anim_type
-  if get_current_animation() != anim:
-      play(anim)
+	var dir = DIRS.vec2dir(speed)
+	if dir == DIRS.NONE: return
+	dir = pvt_dirface(dir)
+	var anim_type
+	if speed.length_squared() > CONST.EPSILON*CONST.EPSILON:
+		anim_type = "moving"
+	else:
+		anim_type = "idle"
+	var anim = pvt_dirname(dir) + anim_type
+	if get_current_animation() != anim:
+		play(anim)
 
 func pvt_dirface(dir):
   if dir == DIRS.UP:
