@@ -9,6 +9,7 @@ onready var rooms = {}
 
 var current_room = null
 var power_cell_list = []
+var power_cell_name_list = []
 
 func _ready():
 	var room = get_node("Room")
@@ -25,6 +26,10 @@ func power_cell_depletion_management(delta):
 
 func add_power_cell_on_list(power_cell):
 	power_cell_list.append(power_cell)
+	power_cell_name_list.append(power_cell.get_name())
+
+func find_power_cell(powered_device):
+	return power_cell_list[power_cell_name_list.find("PowerCell" + powered_device.get_name())]
 
 func _move_to_room(room_name, spawn_tag):
 	var room = _load_room(room_name)
