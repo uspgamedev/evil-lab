@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://objects/charger.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://objects/wall_outlet_0_empty.tex" type="Texture" id=2]
 [ext_resource path="res://objects/charger_area.gd" type="Script" id=3]
+[ext_resource path="res://hud/digital-7.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 50, 50 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 48
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 4 )
 
 [node name="Charger" type="StaticBody2D"]
 
@@ -26,6 +34,7 @@ texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
+transform/scale = Vector2( 0.8, 0.8 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -38,9 +47,43 @@ script/script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
+visibility/visible = false
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+transform/pos = Vector2( 40, -30 )
+polygon = Vector2Array( 20, 0, 120, 0, 120, 60, 20, 60 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Label" type="Label" parent="Polygon2D"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 35.0
+margin/top = 12.0
+margin/right = 106.0
+margin/bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "37%"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="body_enter" from="Area2D" to="Area2D" method="_on_Area2D_body_enter"]
 
