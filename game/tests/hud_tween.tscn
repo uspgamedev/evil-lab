@@ -28,22 +28,27 @@ tile_data = IntArray( -983070, 1, -983069, 1, -983068, 1, -983067, 1, -983066, 1
 [node name="PowerCellComputer" parent="Room" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -200, -150 )
+power_cell_id = null
 
 [node name="PowerCellElevator" parent="Room" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -490, -150 )
+power_cell_id = null
 
 [node name="PowerCellPoweredDoor" parent="Room" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -800, -150 )
+power_cell_id = null
 
 [node name="PowerCellReflector" parent="Room" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -1160, -150 )
+power_cell_id = null
 
 [node name="PowerCellAltar" parent="Room" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -1520, -150 )
+power_cell_id = null
 
 [node name="Charger" parent="Room" instance=ExtResource( 4 )]
 
@@ -52,14 +57,22 @@ transform/pos = Vector2( 1500, -150 )
 [node name="Computer" parent="Room" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 220, -150 )
+power_cell_id = null
+threshold = 0.5
 
 [node name="Elevator" parent="Room" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 680, -140 )
+power_cell_id = null
+threshold = 0.5
 
 [node name="PoweredDoor" parent="Room" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1170, -180 )
+power_cell_id = null
+threshold = 0.5
+target_room_name = null
+spawn_tag = null
 
 [node name="Character" parent="Room" instance=ExtResource( 8 )]
 
@@ -68,10 +81,14 @@ editor/display_folded = true
 [node name="Altar" parent="Room" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( -1839, -50 )
+power_cell_id = null
+threshold = 0.5
 
 [node name="Reflector" parent="Room" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( -1150, -283 )
+power_cell_id = null
+threshold = 0.5
 
 
 [editable path="HUD"]
