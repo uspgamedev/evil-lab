@@ -22,8 +22,8 @@ spawn_tag = "CafeteriaDoor"
 [node name="PowerRoomDoor" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 672, -144 )
-target_room_name = "storage_room"
-spawn_tag = "FromCafeteria"
+target_room_name = "power_room"
+spawn_tag = "CafeteriaDoor"
 
 [node name="CorridorDoor" parent="." instance=ExtResource( 2 )]
 
@@ -32,5 +32,7 @@ target_room_name = "storage_room"
 spawn_tag = "FromCafeteria"
 
 [connection signal="exit_room" from="StorageDoor" to="." method="exit_room"]
+
+[connection signal="exit_room" from="PowerRoomDoor" to="." method="exit_room"]
 
 
