@@ -24,19 +24,16 @@ func _fixed_process(delta):
 	light.set_energy(float(light_battery)/20)
 
 func battery_depletion(delta):
-	if (light_battery > 2):
+	if (!self.light.is_hidden() and light_battery > 2):
 		timer += delta
 		if (timer >= 1):
 			timer = 0
-			light_battery -= 2
+			light_battery -= 18
 
 func recharge_power_bank():
-	var timer = 0
-	while (power_bank < MAX_POWER):
-		timer += 1
-		if (timer > 120):
-			timer = 0
-			power_bank += 10
+	var time = 6 - power_bank/25
+	change_value(power_tween, self, "power_bank", power_bank, MAX_POWER, time)
+	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(MAX_POWER, time)
 
 func set_nearby_interactable(object):
 	interactable = object
@@ -46,7 +43,6 @@ func reload_light_battery():
 	change_value(power_tween, self, "power_bank", power_bank, power_bank-(MAX_BATTERY-light_battery), time)
 	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank-(MAX_BATTERY-light_battery), time)
 	change_value(light_tween, self, "light_battery", light_battery, MAX_BATTERY, time)
-	#change_value(energy_tween, light, 'energy', light.get_energy(), float(light_battery)/20, time)
 
 func change_value(tween, object, property, current_value, new_value, time):
 	tween.interpolate_property(object, property, current_value, new_value, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
