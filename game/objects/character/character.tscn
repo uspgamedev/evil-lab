@@ -2,8 +2,8 @@
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
-[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=3]
-[ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=4]
+[ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
+[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
 [ext_resource path="res://objects/character/lamp.tex" type="Texture" id=5]
 [ext_resource path="res://objects/character/light.tex" type="Texture" id=6]
 [ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=7]
@@ -56,17 +56,27 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/imported = false
 tracks/3/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -86, -144 ), Vector2( -86, -142 ), Vector2( -86, -140 ), Vector2( -86, -142 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( -46.4689, -134.712 ) ]
+"values": [ Vector2( -40, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -93,7 +103,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:frame")
@@ -113,7 +123,17 @@ tracks/3/keys = {
 "times": FloatArray( 0, 0.4, 0.8, 1.2 ),
 "transitions": FloatArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -56, -132 ), Vector2( -48, -136 ), Vector2( -56, -132 ), Vector2( -48, -138 ) ]
+"values": [ Vector2( -96, -132 ), Vector2( -88, -136 ), Vector2( -96, -132 ), Vector2( -88, -138 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -40, 0 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -150,17 +170,17 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/imported = false
 tracks/3/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 46.4689, -134.712 ) ]
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 84, -142 ), Vector2( 84, -140 ), Vector2( 84, -138 ), Vector2( 84, -140 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -197,7 +217,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
@@ -207,7 +227,17 @@ tracks/3/keys = {
 "times": FloatArray( 0, 0.4, 0.8, 1.2 ),
 "transitions": FloatArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 52, -132 ), Vector2( 44, -134 ), Vector2( 52, -132 ), Vector2( 44, -138 ) ]
+"values": [ Vector2( 92, -132 ), Vector2( 84, -134 ), Vector2( 92, -132 ), Vector2( 84, -138 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 40, 0 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -227,7 +257,7 @@ step = 0.1
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -30, -220, 30, -220, 30, -16, -30, -16 )
+points = Vector2Array( -60, -220, 60, -220, 60, -16, -60, -16 )
 
 [node name="Character" instance=ExtResource( 1 )]
 
@@ -235,10 +265,10 @@ script/script = ExtResource( 2 )
 
 [node name="Sprite" parent="."]
 
+transform/pos = Vector2( 40, 0 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -60 )
-flip_h = true
 hframes = 4
 
 [node name="Animation" parent="Sprite"]
@@ -258,7 +288,7 @@ shape = SubResource( 9 )
 
 [node name="Lamp" type="Sprite" parent="."]
 
-transform/pos = Vector2( 46.4689, -134.712 )
+transform/pos = Vector2( 92, -132 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 hframes = 2
