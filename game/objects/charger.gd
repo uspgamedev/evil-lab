@@ -34,6 +34,7 @@ func interact(character):
 		player.disable_movement()
 		sprite.set_texture(charging)
 		sprite.set_hframes(16)
+		sprite.set_frame(player.get_power_bank()/6)
 
 func _input(event):
 	var act = ACT.NONE
