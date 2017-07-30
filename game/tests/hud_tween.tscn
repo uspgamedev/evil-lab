@@ -31,7 +31,7 @@ transform/pos = Vector2( 210, -150 )
 
 [node name="PoweredDoor" parent="Room" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 560, -141 )
+transform/pos = Vector2( 560, -181 )
 
 [node name="Character" parent="Room" instance=ExtResource( 6 )]
 
