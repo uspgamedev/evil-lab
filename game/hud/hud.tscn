@@ -36,24 +36,26 @@ func _fixed_process(delta):
 		queue.pop_front()
 		display_speech(nodes)
 
-func display_speech(nodes):
+func display_speech(node):
 	clear()
-	for step in nodes:
+	for step in node.get_children():
 		if step.get_name().substr(0,1) != \"_\":
 			append(step.text)
 			yield(self, \"finished\")
 			delay_timer.start()
 			yield(delay_timer, \"timeout\")
-		if nodes == null:
-			break
 	end_timer.start()
 	yield(end_timer, \"timeout\")
 	set_visible_characters(0)
 	clear()
 	busy = false
+	if node.is_inside_tree():
+		node.queue_free()
+	else:
+		node.get_parent().remove_child(node)
 
-func queue_speech(nodes):
-	queue.append(nodes)
+func queue_speech(node):
+	queue.append(node)
 
 func clear():
 	set_text(\"\")

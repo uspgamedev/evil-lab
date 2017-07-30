@@ -37,4 +37,5 @@ func _load_room(name):
 		room = rooms[name]
 	else:
 		room = load("res://room/%s.tscn" % name).instance()
+		rooms[name] = room
 	return room
