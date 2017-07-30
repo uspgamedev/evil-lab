@@ -24,8 +24,8 @@ spawn_tag = null
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0, -1 )
-transform/scale = Vector2( 2, 2 )
+transform/pos = Vector2( 0, 13 )
+transform/scale = Vector2( 2, 1.8 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -9 )
 
