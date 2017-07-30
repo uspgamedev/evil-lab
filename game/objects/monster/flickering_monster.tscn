@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://objects/body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/monster/flickering_monster.gd" type="Script" id=2]
+[ext_resource path="res://objects/monster/monstro1.tex" type="Texture" id=3]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -80, -240, 80, -240, 80, 0, -80, 0 )
+
+[node name="FlickeringMonster" instance=ExtResource( 1 )]
+
+script/script = ExtResource( 2 )
+
+[node name="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -120 )
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="Collision" parent="."]
+
+shape = SubResource( 1 )
+
+
