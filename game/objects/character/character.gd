@@ -34,6 +34,9 @@ func recharge_power_bank():
 	var time = 6 - power_bank/25
 	change_value(power_tween, self, "power_bank", power_bank, MAX_POWER, time)
 	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(MAX_POWER, time)
+	disable_movement()
+	yield(get_node('PowerTween'), 'tween_complete')
+	enable_movement()
 
 func set_nearby_interactable(object):
 	self.interactable = object
@@ -76,3 +79,9 @@ func transfer_power(power):
 
 func get_power_bank():
 	return power_bank
+
+func enable_movement():
+	ACC = 24
+
+func disable_movement():
+	ACC = 0
