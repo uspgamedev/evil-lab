@@ -4,17 +4,16 @@ const ACT = preload("res://definitions/actions.gd")
 const MAX_POWER = 100
 const MAX_BATTERY = 20
 const MIN_BATTERY = 2
+const BATTERY_DEPLETION_RATE = .2
 
 var light_battery = MAX_BATTERY
 var power_bank = MAX_POWER
 var interactable
-var timer = 0
 var stored_battery
 var light_on = true
 onready var light = get_node("Lamp/Light2D")
 onready var power_tween = get_node("PowerTween")
 onready var light_tween = get_node("LightTween")
-onready var energy_tween = get_node("EnergyTween")
 
 func _ready():
 	var floor_level = get_pos()
@@ -24,14 +23,11 @@ func _ready():
 
 func _fixed_process(delta):
 	battery_depletion(delta)
-	light.set_energy(float(light_battery)/20)
+	light.set_energy(float(int(light_battery))/20)
 
 func battery_depletion(delta):
 	if (light_on and light_battery > MIN_BATTERY):
-		timer += delta
-		if (timer >= 1):
-			timer = 0
-			light_battery -= MIN_BATTERY
+		light_battery -= BATTERY_DEPLETION_RATE*delta
 
 func recharge_power_bank():
 	var time = 6 - power_bank/25
@@ -43,7 +39,7 @@ func set_nearby_interactable(object):
 
 func reload_light_battery():
 	if (light_on and power_bank > 0):
-		var time = 1 - float(light_battery)/MAX_BATTERY
+		var time = 1 - light_battery/MAX_BATTERY
 		var power_bank_transfer = power_bank-min(power_bank, (MAX_BATTERY-light_battery))
 		change_value(power_tween, self, "power_bank", power_bank, power_bank_transfer, time)
 		get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank_transfer, time)
