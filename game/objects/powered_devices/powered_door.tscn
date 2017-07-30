@@ -13,4 +13,8 @@ script/script = ExtResource( 2 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
+[node name="Area2D" parent="."]
+
+transform/scale = Vector2( 2, 2 )
+
 
