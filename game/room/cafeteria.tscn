@@ -21,13 +21,13 @@ spawn_tag = "CafeteriaDoor"
 
 [node name="PowerRoomDoor" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 672, -144 )
+transform/pos = Vector2( 1280, -144 )
 target_room_name = "power_room"
 spawn_tag = "CafeteriaDoor"
 
 [node name="CorridorDoor" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1280, -144 )
+transform/pos = Vector2( 672, -144 )
 target_room_name = "corridor"
 spawn_tag = "CafeteriaDoor"
 
