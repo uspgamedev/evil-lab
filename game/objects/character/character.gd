@@ -4,7 +4,7 @@ const ACT = preload("res://definitions/actions.gd")
 const MAX_POWER = 100
 const MAX_BATTERY = 22
 const MIN_BATTERY = 2
-const BATTERY_DEPLETION_RATE = .2
+const BATTERY_DEPLETION_RATE = .4
 
 var light_battery = MAX_BATTERY
 var power_bank = MAX_POWER
@@ -25,6 +25,9 @@ func _ready():
 func _fixed_process(delta):
 	battery_depletion(delta)
 	light.set_energy(float(int(light_battery))/20)
+
+func get_light_percent():
+	return light_battery/MAX_BATTERY
 
 func battery_depletion(delta):
 	if (light_on and light_battery > MIN_BATTERY):
