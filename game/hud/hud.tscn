@@ -25,6 +25,7 @@ signal finished
 
 var queue = []
 var busy = false
+var current_speech = null
 
 func _ready():
 	set_fixed_process(true)
@@ -32,9 +33,10 @@ func _ready():
 func _fixed_process(delta):
 	if !busy and !queue.empty():
 		busy = true
-		var nodes = queue.front()
+		var node = queue.front()
+		self.current_speech = node
 		queue.pop_front()
-		display_speech(nodes)
+		display_speech(node)
 
 func display_speech(node):
 	clear()
@@ -55,7 +57,11 @@ func display_speech(node):
 		node.get_parent().remove_child(node)
 
 func queue_speech(node):
-	queue.append(node)
+	if node != self.current_speech:
+		for other in queue:
+			if node == other:
+				return
+		queue.append(node)
 
 func clear():
 	set_text(\"\")
