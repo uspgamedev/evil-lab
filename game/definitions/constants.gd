@@ -1,2 +1,2 @@
 
-const EPSILON = 1e-8
+const EPSILON = 1

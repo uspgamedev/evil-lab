@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
-[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=3]
-[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/character/light.tex" type="Texture" id=5]
+[ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
+[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
+[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/character/light.tex" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -56,13 +57,23 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 
 resource/name = "left_moving"
-length = 1.0
-loop = false
-step = 0.1
+length = 1.6
+loop = true
+step = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
@@ -71,7 +82,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Light2D:transform/pos")
@@ -82,6 +93,26 @@ tracks/1/keys = {
 "transitions": FloatArray( 1 ),
 "update": 0,
 "values": [ Vector2( -100, -160 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -120,13 +151,23 @@ tracks/2/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 
 resource/name = "right_moving"
-length = 1.0
+length = 1.6
 loop = false
-step = 0.1
+step = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
@@ -135,7 +176,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Light2D:transform/pos")
@@ -146,6 +187,26 @@ tracks/1/keys = {
 "transitions": FloatArray( 1 ),
 "update": 0,
 "values": [ Vector2( 100, -160 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -194,7 +255,7 @@ anims/up_moving = SubResource( 8 )
 
 shape = SubResource( 9 )
 
-[node name="KeyboardDirectional" parent="." instance=ExtResource( 4 )]
+[node name="KeyboardDirectional" parent="." instance=ExtResource( 5 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -218,10 +279,10 @@ drag_margin/bottom = 0.2
 
 [node name="Light2D" type="Light2D" parent="."]
 
-transform/pos = Vector2( -100, -160 )
+transform/pos = Vector2( 100, -160 )
 enabled = true
 editor_only = false
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 1, 1, 1, 1 )
