@@ -25,7 +25,7 @@ func _fixed_process(delta):
 func _process(delta):
 	flicker_time += delta
 	flicker = 10*intensity*sin(intensity*4*2*PI*flicker_time)
-	if flicker + randf()*3*intensity > 4:
+	if flicker + randf()*3*intensity > 3:
 		sprite.show()
 	else:
 		sprite.hide()
