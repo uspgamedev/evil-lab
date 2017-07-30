@@ -1,15 +1,61 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://hud/digital-7.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://hud/progress_bar.gd" type="Script" id=2]
+[ext_resource path="res://hud/SpecialElite.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://hud/digital-7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://hud/progress_bar.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 24
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Label
+
+const TIME_PER_CHAR = 0.1
+
+onready var tween = get_node(\"Tween\")
+onready var delay_timer = get_node(\"DelayTimer\")
+onready var end_timer = get_node(\"EndTimer\")
+
+signal finished
+
+func display_speech(nodes):
+	clear()
+	for step in nodes:
+		if step.get_name().substr(0,1) != \"_\":
+			append(step.text)
+			yield(self, \"finished\")
+			delay_timer.start()
+			yield(delay_timer, \"timeout\")
+	end_timer.start()
+	yield(end_timer, \"timeout\")
+	clear()
+
+func clear():
+	set_text(\"\")
+
+func append(text):
+	var k = get_visible_characters()
+	set_text(get_text() + \" \" + text)
+	var n = get_total_character_count()
+	print(\"go %s\" % n)
+	tween.interpolate_method(self, \"set_visible_characters\", k, n, TIME_PER_CHAR*(n-k), Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.start()
+	yield(tween, \"tween_complete\")
+	emit_signal(\"finished\")
+"
+
+[sub_resource type="DynamicFont" id=4]
 
 font/size = 72
 extra_spacing/bottom = 16
 font/use_mipmaps = false
 font/use_filter = false
-font/font = ExtResource( 1 )
+font/font = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -17,6 +63,45 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
+
+[node name="Speech" type="Label" parent="."]
+
+visibility/light_mask = 0
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 80.0
+margin/top = 40.0
+margin/right = 80.0
+margin/bottom = 100.0
+custom_fonts/font = SubResource( 3 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="Speech"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="DelayTimer" type="Timer" parent="Speech"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="EndTimer" type="Timer" parent="Speech"]
+
+process_mode = 0
+wait_time = 4.0
+one_shot = true
+autostart = false
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 
@@ -29,7 +114,7 @@ margin/left = 944.0
 margin/top = 600.0
 margin/right = 1200.0
 margin/bottom = 680.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 range/min = 0.0
 range/max = 100.0
 range/step = 1.0
@@ -38,7 +123,7 @@ range/value = 42.0
 range/exp_edit = false
 range/rounded = false
 percent/visible = true
-script/script = ExtResource( 2 )
+script/script = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="ProgressBar"]
 
