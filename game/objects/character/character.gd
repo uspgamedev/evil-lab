@@ -14,6 +14,9 @@ onready var light_tween = get_node("LightTween")
 onready var energy_tween = get_node("EnergyTween")
 
 func _ready():
+	var floor_level = get_pos()
+	floor_level.y = 0
+	set_pos(floor_level)
 	set_fixed_process(true)
 
 func _fixed_process(delta):
@@ -34,11 +37,6 @@ func recharge_power_bank():
 		if (timer > 120):
 			timer = 0
 			power_bank += 10
-
-func _ready():
-	var floor_level = get_pos()
-	floor_level.y = 0
-	set_pos(floor_level)
 
 func set_nearby_interactable(object):
 	interactable = object
