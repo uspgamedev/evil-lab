@@ -1,7 +1,7 @@
 extends Node2D
 
 const CHARACTER = preload("res://objects/character/character.tscn")
-const MAX_LAB_POWER = 500
+const MAX_LAB_POWER = 300
 const MIN_LAB_POWER = 0
 const LAB_POWER_DEPLETION_RATE = .3
 
@@ -10,7 +10,7 @@ export(String) var first_room
 onready var character = CHARACTER.instance()
 onready var power_cells = get_node("PowerCells")
 onready var rooms = {}
-var lab_power = 0
+var lab_power = MAX_LAB_POWER*0.80
 var tween
 
 var current_room = null

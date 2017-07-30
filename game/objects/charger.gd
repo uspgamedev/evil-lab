@@ -1,8 +1,7 @@
 extends StaticBody2D
 
+const MAIN = preload("res://main.gd")
 const ACT = preload("res://definitions/actions.gd")
-const MAX_LAB_POWER = 500
-const MIN_LAB_POWER = 0
 
 onready var sprite = get_node("Sprite")
 onready var arrow = get_node('Arrow')
@@ -20,7 +19,7 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	label.set_text(str(max(0, round(main.get_lab_power()/5))) + '%')
+	label.set_text(str(max(0, round(100.0*main.get_lab_power()/MAIN.MAX_LAB_POWER))) + '%')
 
 func interact(character):
 	player = character
@@ -29,6 +28,7 @@ func interact(character):
 		player.enable_movement()
 		sprite.set_texture(idle)
 		sprite.set_hframes(1)
+		sprite.set_frame(0)
 	else:
 		arrow.show()
 		player.disable_movement()
@@ -41,7 +41,7 @@ func _input(event):
 	if (!arrow.is_hidden() and can_charge):
 		if (event.is_action_pressed("ui_up")):
 			can_charge = false
-			var power_bank_transfer = round(min(player.get_power_bank(), min(10, MAX_LAB_POWER - main.get_lab_power())))
+			var power_bank_transfer = round(min(player.get_power_bank(), min(10, MAIN.MAX_LAB_POWER - main.get_lab_power())))
 			player.transfer_power(-power_bank_transfer)
 			if (power_bank_transfer != 0):
 				main.change_value(power_bank_transfer, self)
