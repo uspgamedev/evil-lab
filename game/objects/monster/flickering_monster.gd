@@ -32,3 +32,7 @@ func _process(delta):
 	if randf() > 0.8:
 		sprite.set_frame(randi()%3)
 		sprite.set_flip_h(randf() > 0.5)
+
+func check_character(body):
+	if body == character:
+		get_tree().quit()
