@@ -42,3 +42,6 @@ func interact(character):
 	else:
 		arrow.show()
 		player.disable_movement()
+
+func get_power_cell_energy():
+	return power_cell
