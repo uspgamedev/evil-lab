@@ -35,14 +35,21 @@ func _input(event):
 	if (!arrow.is_hidden() and can_charge):
 		if (event.is_action_pressed("ui_up")):
 			can_charge = false
-			var power_bank_transfer = min(player.get_power_bank(), min(10, MAX_POWER_CELL - power_cell))
+			var power_bank_transfer = round(min(player.get_power_bank(), min(10, MAX_POWER_CELL - power_cell)))
 			player.transfer_power(-power_bank_transfer)
-			change_value(self, 'power_cell', power_cell, power_cell + power_bank_transfer, 1)
+			if (power_bank_transfer != 0):
+				change_value(self, 'power_cell', power_cell, power_cell + power_bank_transfer, 1)
+			else:
+				can_charge = true
 		elif (event.is_action_pressed("ui_down")):
 			can_charge = false
-			var power_bank_transfer = min(100 - player.get_power_bank(), min(10, power_cell))
+			var power_bank_transfer = round(min(100 - player.get_power_bank(), min(10, power_cell)))
 			player.transfer_power(power_bank_transfer)
-			change_value(self, 'power_cell', power_cell, power_cell - power_bank_transfer, 1)
+			print(power_bank_transfer)
+			if (power_bank_transfer != 0):
+				change_value(self, 'power_cell', power_cell, power_cell - power_bank_transfer, 1)
+			else:
+				can_charge = true
 
 func interact(character):
 	player = character

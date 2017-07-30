@@ -1,17 +1,24 @@
 extends Node2D
 
 const CHARACTER = preload("res://objects/character/character.tscn")
+const MAX_LAB_POWER = 500
+const MIN_LAB_POWER = 0
+const LAB_POWER_DEPLETION_RATE = .3
 
 export(String) var first_room
 
 onready var character = CHARACTER.instance()
 onready var rooms = {}
+var lab_power = 0
+var tween
 
 var current_room = null
 var power_cell_list = []
 var power_cell_name_list = []
 
 func _ready():
+	tween = Tween.new()
+	self.add_child(tween)
 	var room = get_node("Room")
 	if room == null:
 		_move_to_room(first_room, "Start")
@@ -56,3 +63,23 @@ func _load_room(name):
 		room = load("res://room/%s.tscn" % name).instance()
 		rooms[name] = room
 	return room
+
+func get_lab_power():
+	return lab_power
+
+func update_lab_power(new_value):
+	lab_power = new_value
+
+func lab_power_depletion(delta):
+	if (lab_power > MIN_LAB_POWER):
+		lab_power -= LAB_POWER_DEPLETION_RATE*delta
+
+func change_value(power_bank_transfer, charger):
+	change_value2(charger, self, 'lab_power', lab_power, lab_power + power_bank_transfer, 1)
+
+func change_value2(charger, object, property, current_value, new_value, time):
+	tween.interpolate_property(object, property, current_value, new_value, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.set_repeat(false)
+	tween.start()
+	yield(tween, 'tween_complete')
+	charger.can_charge = true

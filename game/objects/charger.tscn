@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://objects/charger.gd" type="Script" id=1]
 [ext_resource path="res://objects/wall_outlet_0_empty.tex" type="Texture" id=2]
 [ext_resource path="res://objects/charger_area.gd" type="Script" id=3]
 [ext_resource path="res://hud/digital-7.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://objects/updown.tex" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -84,6 +85,13 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Arrow" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 109, 0 )
+texture = ExtResource( 5 )
+modulate = Color( 1, 0, 0, 1 )
 
 [connection signal="body_enter" from="Area2D" to="Area2D" method="_on_Area2D_body_enter"]
 
