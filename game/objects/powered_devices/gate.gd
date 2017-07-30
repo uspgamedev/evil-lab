@@ -13,11 +13,11 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	if (power_cell.get_power_cell_energy() <= 0 and !is_open):
+	if (!has_power() and !is_open):
 		is_open = true
 		change_value(bot_tween, bot, "transform/pos", bot.get_pos(), bot.get_pos() + Vector2(0, 120), 2)
 		change_value(top_tween, top, "transform/pos", top.get_pos(), top.get_pos() - Vector2(0, 120), 2)
-	elif (power_cell.get_power_cell_energy() > 0 and is_open):
+	elif (has_power() and is_open):
 		is_open = false
 		change_value(bot_tween, bot, "transform/pos", bot.get_pos(), bot.get_pos() - Vector2(0, 120), 2)
 		change_value(top_tween, top, "transform/pos", top.get_pos(), top.get_pos() + Vector2(0, 120), 2)

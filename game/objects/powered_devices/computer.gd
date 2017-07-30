@@ -9,7 +9,7 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	if (power_cell.get_power_cell_energy() > 0):
+	if (has_power()):
 		sprite.set_texture(on)
 		sprite.set_hframes(2)
 		if (!anim.is_playing()):
@@ -20,5 +20,5 @@ func _fixed_process(delta):
 		sprite.set_hframes(1)
 
 func interact(character):
-	if (power_cell.get_power_cell_energy() > 0):
+	if (has_power()):
 		print('hacking')

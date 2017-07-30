@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=3]
 
 [node name="PowerRoom" instance=ExtResource( 1 )]
 
@@ -14,6 +15,11 @@ tile_data = IntArray( -983056, 1, -983055, 1, -983054, 1, -983053, 1, -983052, 1
 transform/pos = Vector2( 0, -144 )
 target_room_name = "cafeteria"
 spawn_tag = "PowerRoomDoor"
+
+[node name="PowerCell" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 544, -176 )
+power_cell_id = "CafeteriaCorridorDoor"
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
 

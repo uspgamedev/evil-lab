@@ -9,14 +9,14 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	if (power_cell.get_power_cell_energy() > 0):
+	if (has_power()):
 		sprite.set_texture(on)
 		light.show()
 	else:
 		sprite.set_texture(off)
 		light.hide()
 	if (!light.is_hidden()):
-		light.set_energy(power_cell.get_power_cell_energy()/50)
+		light.set_energy(get_power()/POWER_CELL.MAX_POWER_CELL)
 
 func interact(character):
 	pass

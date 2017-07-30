@@ -24,6 +24,8 @@ tracks/0/keys = {
 [node name="Computer" instance=ExtResource( 1 )]
 
 script/script = ExtResource( 2 )
+power_cell_id = null
+threshold = 0.5
 
 [node name="Area2D" parent="."]
 

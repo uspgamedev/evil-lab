@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://objects/power_cell_data/power_cell_data.gd" type="Script" id=1]
+
+[node name="PowerCellData" type="Node"]
+
+script/script = ExtResource( 1 )
+initial_power = null
+
+[node name="Tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+
