@@ -52,10 +52,8 @@ func display_speech(node):
 	clear()
 	busy = false
 	if node.is_inside_tree():
-		print(\"freed\")
 		node.queue_free()
 	else:
-		print(\"removed\")
 		node.get_parent().remove_child(node)
 
 func queue_speech(node):
