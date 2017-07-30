@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=1]
+[gd_scene load_steps=28 format=1]
 
 [ext_resource path="res://room/tiles/bg_concrete_0.tex" type="Texture" id=1]
 [ext_resource path="res://room/tiles/bg_concrete_1.tex" type="Texture" id=2]
@@ -17,6 +17,10 @@
 [ext_resource path="res://room/tiles/bg_concrete_moss_bottom_end_4.tex" type="Texture" id=15]
 [ext_resource path="res://room/tiles/fg_concrete_0.tex" type="Texture" id=16]
 [ext_resource path="res://room/tiles/fg_wood_0.tex" type="Texture" id=17]
+[ext_resource path="res://room/tiles/fg_wood_1.tex" type="Texture" id=18]
+[ext_resource path="res://room/tiles/fg_wood_2.tex" type="Texture" id=19]
+[ext_resource path="res://room/tiles/fg_wood_3.tex" type="Texture" id=20]
+[ext_resource path="res://room/tiles/fg_wood_4.tex" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -323,6 +327,166 @@ __meta__ = {
 }
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="FGFloorHalf"]
+
+occluder = SubResource( 6 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGFloorHalf1" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 503.637, 409.596 )
+texture = ExtResource( 18 )
+modulate = Color( 0.675781, 0.675781, 0.675781, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGFloorHalf1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGFloorHalf1/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGFloorHalf1"]
+
+occluder = SubResource( 6 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGFloorHalf2" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 608.9, 407.38 )
+texture = ExtResource( 19 )
+modulate = Color( 0.675781, 0.675781, 0.675781, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGFloorHalf2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGFloorHalf2/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGFloorHalf2"]
+
+occluder = SubResource( 6 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGFloorHalf3" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 396.157, 531.48 )
+texture = ExtResource( 20 )
+modulate = Color( 0.675781, 0.675781, 0.675781, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGFloorHalf3"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGFloorHalf3/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGFloorHalf3"]
+
+occluder = SubResource( 6 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGFloorHalf4" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 514.717, 532.588 )
+texture = ExtResource( 21 )
+modulate = Color( 0.675781, 0.675781, 0.675781, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGFloorHalf4"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGFloorHalf4/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGFloorHalf4"]
 
 occluder = SubResource( 6 )
 light_mask = 1

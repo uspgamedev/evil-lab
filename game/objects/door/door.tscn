@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://objects/door/door.gd" type="Script" id=1]
-[ext_resource path="res://room/decoration/door_0.tex" type="Texture" id=2]
+[ext_resource path="res://room/decoration/door_1.tex" type="Texture" id=2]
 [ext_resource path="res://objects/interaction_area.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -24,6 +24,7 @@ spawn_tag = null
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/pos = Vector2( 0, -1 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -9 )
