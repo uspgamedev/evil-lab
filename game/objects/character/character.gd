@@ -8,7 +8,7 @@ var light_battery = MAX_BATTERY
 var power_bank = MAX_POWER
 var interactable
 var timer = 0
-onready var light = get_node("Light2D")
+onready var light = get_node("Lamp/Light2D")
 onready var power_tween = get_node("PowerTween")
 onready var light_tween = get_node("LightTween")
 onready var energy_tween = get_node("EnergyTween")
