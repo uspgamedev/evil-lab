@@ -166,7 +166,7 @@ tracks/3/keys = {
 
 resource/name = "right_moving"
 length = 1.6
-loop = false
+loop = true
 step = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:flip_h")
