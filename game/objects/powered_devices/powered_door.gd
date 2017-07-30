@@ -5,11 +5,22 @@ onready var is_open = false
 onready var open_door = load("res://objects/powered_devices/metal_door_open.tex")
 onready var closed_door = load("res://objects/powered_devices/metal_door_closed.tex")
 
+export(String) var target_room_name
+export(String) var spawn_tag
+
+signal exit_room(target_room_name, spawn_tag)
+
+func _ready():
+	set_fixed_process(true)
+
+func _fixed_process(delta):
+	if (1.0*get_power()/POWER_CELL.MAX_POWER_CELL > 0.2):
+		sprite.set_texture(closed_door)
+		is_open = false
+	else:
+		sprite.set_texture(open_door)
+		is_open = true
+
 func interact(character):
-	if (power_cell.get_power_cell_energy() > 0):
-		if (!is_open):
-			sprite.set_texture(open_door)
-			is_open = true
-		else:
-			sprite.set_texture(closed_door)
-			is_open = false
+	if (is_open):
+		emit_signal("exit_room", self.target_room_name, self.spawn_tag)

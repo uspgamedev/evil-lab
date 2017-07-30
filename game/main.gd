@@ -8,6 +8,7 @@ const LAB_POWER_DEPLETION_RATE = .3
 export(String) var first_room
 
 onready var character = CHARACTER.instance()
+onready var power_cells = get_node("PowerCells")
 onready var rooms = {}
 var lab_power = 0
 var tween
@@ -22,7 +23,12 @@ func _ready():
 	var room = get_node("Room")
 	if room == null:
 		_move_to_room(first_room, "Start")
+	for power_cell in power_cells.get_children():
+		power_cell.player = self.character
 	set_fixed_process(true)
+
+func get_power_cell(id):
+	return power_cells.get_node(id)
 
 func _fixed_process(delta):
 	power_cell_depletion_management(delta)

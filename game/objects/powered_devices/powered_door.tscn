@@ -7,10 +7,27 @@
 [node name="PoweredDoor" instance=ExtResource( 1 )]
 
 script/script = ExtResource( 2 )
+power_cell_id = null
+target_room_name = null
+spawn_tag = null
 
 [node name="Area2D" parent="."]
 
 transform/scale = Vector2( 2, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( -60, -180, 60, -180, 60, 180, -60, 180 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
