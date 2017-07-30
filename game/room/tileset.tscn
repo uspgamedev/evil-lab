@@ -1,37 +1,138 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=22 format=1]
 
-[ext_resource path="res://room/temp-tiles.tex" type="Texture" id=1]
+[ext_resource path="res://room/tiles/bg_concrete_0.tex" type="Texture" id=1]
+[ext_resource path="res://room/tiles/bg_concrete_1.tex" type="Texture" id=2]
+[ext_resource path="res://room/tiles/bg_concrete_2.tex" type="Texture" id=3]
+[ext_resource path="res://room/tiles/bg_concrete_3.tex" type="Texture" id=4]
+[ext_resource path="res://room/tiles/bg_concrete_4.tex" type="Texture" id=5]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_0.tex" type="Texture" id=6]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_1.tex" type="Texture" id=7]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_2.tex" type="Texture" id=8]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_3.tex" type="Texture" id=9]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_4.tex" type="Texture" id=10]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_end_0.tex" type="Texture" id=11]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_end_1.tex" type="Texture" id=12]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_end_2.tex" type="Texture" id=13]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_end_3.tex" type="Texture" id=14]
+[ext_resource path="res://room/tiles/bg_concrete_moss_bottom_end_4.tex" type="Texture" id=15]
+[ext_resource path="res://room/tiles/fg_concrete_0.tex" type="Texture" id=16]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40, 40 )
 
-[sub_resource type="OccluderPolygon2D" id=1]
+[sub_resource type="OccluderPolygon2D" id=2]
 
 closed = true
 cull_mode = 0
-polygon = Vector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
+polygon = Vector2Array( -40, -40, 40, -40, 40, 40, -40, 40 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( 0, -40, 40, -40, 40, 40, 0, 40 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( 0, -40, 40, -40, 40, 0, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( -40, -40, 40, -40, 40, 40, 0, 40, 0, 0, -40, 0 )
 
 [node name="Tileset" type="Node2D"]
 
-[node name="BGWall" type="Sprite" parent="."]
+[node name="BGWhiteWall" type="Sprite" parent="."]
 
-transform/pos = Vector2( 70, 60 )
+transform/pos = Vector2( 165, 61 )
 texture = ExtResource( 1 )
-vframes = 5
 
-[node name="FGWall" type="Sprite" parent="."]
+[node name="BGWhiteWall1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 70, 150 )
-texture = ExtResource( 1 )
-vframes = 5
-frame = 3
+transform/pos = Vector2( 266.785, 61 )
+texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="FGWall"]
+[node name="BGWhiteWall2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 367.784, 60.1855 )
+texture = ExtResource( 3 )
+
+[node name="BGWhiteWall3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 467.154, 60.1855 )
+texture = ExtResource( 4 )
+
+[node name="BGWhiteWall4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 564.08, 63.4435 )
+texture = ExtResource( 5 )
+
+[node name="BGWhiteMossyWall" type="Sprite" parent="."]
+
+transform/pos = Vector2( 168.258, 166.886 )
+texture = ExtResource( 6 )
+
+[node name="BGWhiteMossyWall1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 271.7, 165.257 )
+texture = ExtResource( 7 )
+
+[node name="BGWhiteMossyWall2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 373.514, 165.257 )
+texture = ExtResource( 8 )
+
+[node name="BGWhiteMossyWall3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 475.327, 161.999 )
+texture = ExtResource( 9 )
+
+[node name="BGWhiteMossyWall4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 577.955, 161.184 )
+texture = ExtResource( 10 )
+
+[node name="BGWhiteMossyWallCorner" type="Sprite" parent="."]
+
+transform/pos = Vector2( 169.955, 276.184 )
+texture = ExtResource( 11 )
+
+[node name="BGWhiteMossyWallCorner1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 274.955, 278.184 )
+texture = ExtResource( 12 )
+
+[node name="BGWhiteMossyWallCorner2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 375.955, 272.184 )
+texture = ExtResource( 13 )
+
+[node name="BGWhiteMossyWallCorner3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 487.955, 267.184 )
+texture = ExtResource( 14 )
+
+[node name="BGWhiteMossyWallCorner4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 589.955, 270.184 )
+texture = ExtResource( 15 )
+
+[node name="FGVoid" type="Sprite" parent="."]
+
+transform/pos = Vector2( 170.276, 411.103 )
+texture = ExtResource( 16 )
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGVoid"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -40,16 +141,145 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FGWall/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGVoid/StaticBody2D"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="FGWall"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGVoid"]
 
-occluder = SubResource( 1 )
+occluder = SubResource( 2 )
 light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGWhiteWallHalf" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 286.341, 408.089 )
+texture = ExtResource( 16 )
+modulate = Color( 0.335938, 0.335938, 0.335938, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGWhiteWallHalf"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGWhiteWallHalf/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGWhiteWallHalf"]
+
+occluder = SubResource( 3 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGWhiteWallQuarter" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 278.805, 519.632 )
+texture = ExtResource( 16 )
+modulate = Color( 0.335938, 0.335938, 0.335938, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGWhiteWallQuarter"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGWhiteWallQuarter/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGWhiteWallQuarter"]
+
+occluder = SubResource( 4 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FGWhiteWallThreeQuarters" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 277.297, 617.609 )
+texture = ExtResource( 16 )
+modulate = Color( 0.335938, 0.335938, 0.335938, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FGWhiteWallThreeQuarters"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FGWhiteWallThreeQuarters/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FGWhiteWallThreeQuarters"]
+
+occluder = SubResource( 5 )
+light_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 
