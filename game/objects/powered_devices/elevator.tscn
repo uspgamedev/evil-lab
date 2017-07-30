@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://objects/powered_devices/basic_powered_device.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/powered_devices/powered_door.gd" type="Script" id=2]
+[ext_resource path="res://objects/powered_devices/temp-elevator.tex" type="Texture" id=3]
+
+[node name="Elevator" instance=ExtResource( 1 )]
+
+script/script = ExtResource( 2 )
+
+[node name="Area2D" parent="."]
+
+transform/scale = Vector2( 3, 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+
