@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://main.tscn" type="PackedScene" id=1]
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://objects/powered_devices/elevator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/powered_devices/powered_door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/character/character.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/powered_devices/reflector.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/powered_devices/altar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/powered_devices/reflector.tscn" type="PackedScene" id=10]
 
 [node name="Main" instance=ExtResource( 1 )]
 
@@ -40,6 +41,10 @@ transform/pos = Vector2( -800, -150 )
 
 transform/pos = Vector2( -1160, -150 )
 
+[node name="PowerCellAltar" parent="Room" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -1520, -150 )
+
 [node name="Charger" parent="Room" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2190, -150 )
@@ -60,7 +65,11 @@ transform/pos = Vector2( 1170, -180 )
 
 editor/display_folded = true
 
-[node name="Reflector" parent="Room" instance=ExtResource( 9 )]
+[node name="Altar" parent="Room" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( -1839, -50 )
+
+[node name="Reflector" parent="Room" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( -1150, -283 )
 
