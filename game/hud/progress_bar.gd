@@ -1,17 +1,13 @@
 extends ProgressBar
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
-func change_value(new_value):
-	var tween = get_node("Tween")
-	var current_value = get_value()
-	tween.interpolate_property(self, "value", current_value, new_value, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-
+const CONST = preload("res://definitions/constants.gd")
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	change_value(100, CONST.EPSILON)
+
+func change_value(new_value, time):
+	var tween = get_node("Tween")
+	var current_value = get_value()
+	tween.interpolate_property(self, "range/value", current_value, new_value, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.set_repeat(false)
+	tween.start()

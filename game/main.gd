@@ -12,22 +12,23 @@ var current_room = null
 func _ready():
 	var room = get_node("Room")
 	if room == null:
-		_move_to_room(_load_room(first_room), "Start")
+		_move_to_room(first_room, "Start")
 
-func _move_to_room(room, spawn_tag):
+func _move_to_room(room_name, spawn_tag):
+	var room = _load_room(room_name)
 	if self.current_room != null:
-		self.currnet_room.disconnect("character_exited", self, "_move_to_room")
+		self.current_room.disconnect("character_exited", self, "_move_to_room")
 		self.current_room.remove_child(character)
-		yield(self.character, "exit_tree")
 		remove_child(self.current_room)
-		yield(self.current_room, "exit_tree")
+	var spawn_pos = room.get_node(spawn_tag).get_pos()
+	self.character.set_pos(spawn_pos)
+	self.character.speed = 0
 	room.add_child(self.character)
-	self.character.set_pos(room.get_node(spawn_tag).get_pos())
 	self.current_room = room
 	add_child(room)
 	move_child(room, 0)
-	yield(room, "enter_tree")
 	room.connect("character_exited", self, "_move_to_room")
+	assert(room.is_connected("character_exited", self, "_move_to_room"))
 
 func _load_room(name):
 	var room

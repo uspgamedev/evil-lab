@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
-[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=3]
-[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/character/light.tex" type="Texture" id=5]
+[ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
+[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
+[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/character/light.tex" type="Texture" id=6]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 
 resource/name = "down_idle"
 length = 1.0
@@ -23,9 +24,9 @@ step = 0.1
 [sub_resource type="Animation" id=3]
 
 resource/name = "left_idle"
-length = 1.0
-loop = false
-step = 0.1
+length = 1.6
+loop = true
+step = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
@@ -45,14 +46,128 @@ tracks/1/keys = {
 "transitions": FloatArray( 1 ),
 "update": 0,
 "values": [ Vector2( -100, -160 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
 }
 
 [sub_resource type="Animation" id=4]
 
 resource/name = "left_moving"
-length = 1.0
-loop = false
-step = 0.1
+length = 1.6
+loop = true
+step = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Light2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -100, -160 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "right_idle"
+length = 1.6
+loop = true
+step = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:flip_h")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Light2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, -160 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "right_moving"
+length = 1.6
+loop = true
+step = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:flip_h")
 tracks/0/interp = 1
@@ -71,61 +186,27 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( -100, -160 ) ]
+"values": [ Vector2( 100, -160 ) ]
 }
-
-[sub_resource type="Animation" id=5]
-
-resource/name = "right_idle"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:flip_h")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Light2D:transform/pos")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 100, -160 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-
-resource/name = "right_moving"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:flip_h")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Light2D:transform/pos")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 100, -160 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -145,7 +226,7 @@ step = 0.1
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -30, -220, 30, -220, 30, -5, -30, -5 )
+points = Vector2Array( -30, -220, 30, -220, 30, -16, -30, -16 )
 
 [node name="Character" instance=ExtResource( 1 )]
 
@@ -156,12 +237,12 @@ script/script = ExtResource( 2 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -60 )
-flip_h = true
 hframes = 4
+frame = 1
 
 [node name="Animation" parent="Sprite"]
 
-anims/down_idle = SubResource( 10 )
+anims/down_idle = SubResource( 1 )
 anims/down_moving = SubResource( 2 )
 anims/left_idle = SubResource( 3 )
 anims/left_moving = SubResource( 4 )
@@ -174,7 +255,7 @@ anims/up_moving = SubResource( 8 )
 
 shape = SubResource( 9 )
 
-[node name="KeyboardDirectional" parent="." instance=ExtResource( 4 )]
+[node name="KeyboardDirectional" parent="." instance=ExtResource( 5 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -201,7 +282,7 @@ drag_margin/bottom = 0.2
 transform/pos = Vector2( 100, -160 )
 enabled = true
 editor_only = false
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 1, 1, 1, 1 )
@@ -218,6 +299,27 @@ shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
+
+[node name="PowerTween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="LightTween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="EnergyTween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [connection signal="pressing_act" from="Actions" to="." method="_pressing_act"]
 

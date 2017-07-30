@@ -1,2 +1,2 @@
 
-const EPSILON = 0.1
+const EPSILON = 1
