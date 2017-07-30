@@ -39,6 +39,10 @@ transform/pos = Vector2( 2160, -144 )
 target_room_name = "basement_corridor"
 spawn_tag = "CorridorDoor"
 
+[node name="Start" type="Node2D" parent="."]
+
+transform/pos = Vector2( 336, -176 )
+
 [connection signal="exit_room" from="EntranceDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
