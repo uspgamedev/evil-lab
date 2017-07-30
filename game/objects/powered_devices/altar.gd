@@ -13,7 +13,7 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	if (power_cell.get_power_cell_energy() > 0):
+	if (has_power()):
 		if(light.is_hidden()):
 			change_value(tween, light, 'energy', 0, 0.2, float(1)/3)
 			light.show()
@@ -26,5 +26,5 @@ func _fixed_process(delta):
 		light.hide()
 
 func interact(character):
-	if (power_cell.get_power_cell_energy() > 0):
+	if (has_power()):
 		get_tree().quit()

@@ -14,7 +14,7 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	if (1.0*get_power()/POWER_CELL.MAX_POWER_CELL > 0.2):
+	if (has_power()):
 		sprite.set_texture(closed_door)
 		is_open = false
 	else:

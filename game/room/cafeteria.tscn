@@ -38,6 +38,7 @@ spawn_tag = "CafeteriaDoor"
 
 transform/pos = Vector2( 672, -183 )
 power_cell_id = "CafeteriaCorridorDoor"
+threshold = 0.2
 target_room_name = "corridor"
 spawn_tag = "CafeteriaDoor"
 

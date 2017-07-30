@@ -8,6 +8,8 @@
 [node name="Reflector" instance=ExtResource( 1 )]
 
 script/script = ExtResource( 2 )
+power_cell_id = null
+threshold = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
