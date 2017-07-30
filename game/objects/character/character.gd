@@ -21,6 +21,7 @@ func _ready():
 	floor_level.y = 0
 	set_pos(floor_level)
 	set_fixed_process(true)
+	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank, 1)
 
 func _fixed_process(delta):
 	battery_depletion(delta)
@@ -78,13 +79,13 @@ func _pressing_act(act):
 
 func transfer_power(power):
 	power_bank += power
-	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank, 0.0001)
+	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank, 1)
 
 func get_power_bank():
 	return power_bank
 
 func enable_movement():
-	ACC = 24
+	ACC = 240
 
 func disable_movement():
 	ACC = 0
