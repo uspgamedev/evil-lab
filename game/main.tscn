@@ -7,7 +7,7 @@
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
-first_room = "storage_room"
+first_room = "hall2f"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 

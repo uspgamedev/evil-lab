@@ -20,6 +20,7 @@ func _move_to_room(room_name, spawn_tag):
 		self.current_room.disconnect("character_exited", self, "_move_to_room")
 		self.current_room.remove_child(character)
 		remove_child(self.current_room)
+		yield(get_tree(), "fixed_frame")
 	var spawn_pos = room.get_node(spawn_tag).get_pos()
 	self.character.set_pos(spawn_pos)
 	self.character.speed = 0

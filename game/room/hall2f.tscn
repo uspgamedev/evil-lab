@@ -54,6 +54,10 @@ texture = ExtResource( 4 )
 transform/pos = Vector2( 32, 14 )
 texture = ExtResource( 4 )
 
+[node name="Start" type="Node2D" parent="."]
+
+transform/pos = Vector2( -256, -176 )
+
 [connection signal="exit_room" from="Elevator" to="." method="exit_room"]
 
 [connection signal="exit_room" from="ControlRoomDoor" to="." method="exit_room"]

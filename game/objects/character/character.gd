@@ -9,6 +9,7 @@ const BATTERY_DEPLETION_RATE = .2
 var light_battery = MAX_BATTERY
 var power_bank = MAX_POWER
 var interactable
+var lock = false
 var stored_battery
 var light_on = true
 onready var light = get_node("Lamp/Light2D")
@@ -35,7 +36,11 @@ func recharge_power_bank():
 	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(MAX_POWER, time)
 
 func set_nearby_interactable(object):
-	interactable = object
+	self.interactable = object
+
+func unset_nearby_interactable(object):
+	if self.interactable == object:
+		self.interactable = null
 
 func reload_light_battery():
 	if (light_on and power_bank > 0):
