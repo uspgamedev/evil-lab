@@ -29,6 +29,7 @@ power_cell_id = null
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 hframes = 10
 
