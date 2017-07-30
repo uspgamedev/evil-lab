@@ -11,6 +11,7 @@ onready var sprite = get_node('Sprite')
 onready var label = get_node("Arrow/Label")
 onready var tween = get_node('Tween')
 onready var power_cell = 0
+var can_charge = true
 
 func _ready():
 	get_tree().get_root().get_node("Main").add_power_cell_on_list(self)
@@ -26,15 +27,19 @@ func change_value(object, property, current_value, new_value, time):
 	tween.interpolate_property(object, property, current_value, new_value, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.set_repeat(false)
 	tween.start()
+	yield(tween, 'tween_complete')
+	can_charge = true
 
 func _input(event):
 	var act = ACT.NONE
-	if (!arrow.is_hidden()):
+	if (!arrow.is_hidden() and can_charge):
 		if (event.is_action_pressed("ui_up")):
+			can_charge = false
 			var power_bank_transfer = min(player.get_power_bank(), min(10, MAX_POWER_CELL - power_cell))
 			player.transfer_power(-power_bank_transfer)
 			change_value(self, 'power_cell', power_cell, power_cell + power_bank_transfer, 1)
 		elif (event.is_action_pressed("ui_down")):
+			can_charge = false
 			var power_bank_transfer = min(100 - player.get_power_bank(), min(10, power_cell))
 			player.transfer_power(power_bank_transfer)
 			change_value(self, 'power_cell', power_cell, power_cell - power_bank_transfer, 1)
