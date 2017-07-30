@@ -42,10 +42,11 @@ func set_nearby_interactable(object):
 	interactable = object
 
 func reload_light_battery():
-	if (light_on):
+	if (light_on and power_bank > 0):
 		var time = 1 - float(light_battery)/MAX_BATTERY
-		change_value(power_tween, self, "power_bank", power_bank, power_bank-(MAX_BATTERY-light_battery), time)
-		get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank-(MAX_BATTERY-light_battery), time)
+		var power_bank_transfer = power_bank-min(power_bank, (MAX_BATTERY-light_battery))
+		change_value(power_tween, self, "power_bank", power_bank, power_bank_transfer, time)
+		get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank_transfer, time)
 		change_value(light_tween, self, "light_battery", light_battery, MAX_BATTERY, time)
 
 func change_value(tween, object, property, current_value, new_value, time):
@@ -67,3 +68,10 @@ func _pressing_act(act):
 	if (act == ACT.INTERACT):
 		if (interactable != null):
 			interactable.interact(self)
+
+func transfer_power(power):
+	power_bank += power
+	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank, 0.0001)
+
+func get_power_bank():
+	return power_bank
