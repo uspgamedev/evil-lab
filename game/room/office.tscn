@@ -13,7 +13,7 @@ tile_data = IntArray( -983056, 1, -983055, 1, -983054, 1, -983053, 1, -983052, 1
 
 transform/pos = Vector2( -176, -144 )
 target_room_name = "corridor"
-spawn_tag = "OfficieDoor"
+spawn_tag = "OfficeDoor"
 
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
