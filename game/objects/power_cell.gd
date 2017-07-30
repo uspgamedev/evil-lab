@@ -38,5 +38,7 @@ func interact(character):
 	player = character
 	if (!arrow.is_hidden()):
 		arrow.hide()
+		player.enable_movement()
 	else:
 		arrow.show()
+		player.disable_movement()
