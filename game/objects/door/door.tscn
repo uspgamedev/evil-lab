@@ -1,4 +1,13 @@
-[gd_scene format=1]
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://objects/door/door.gd" type="Script" id=1]
+[ext_resource path="res://objects/door/temp-door.tex" type="Texture" id=2]
+[ext_resource path="res://objects/interaction_area.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60, 144 )
 
 [node name="Door" type="StaticBody2D"]
 
@@ -9,5 +18,19 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+script/script = ExtResource( 1 )
+target_room_name = null
+spawn_tag = null
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="Area2D" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="Area2D"]
+
+shape = SubResource( 1 )
 
 
+[editable path="Area2D"]
