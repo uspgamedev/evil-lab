@@ -4,14 +4,14 @@
 [ext_resource path="res://hud/digital-7.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://hud/progress_bar.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 
 font/size = 24
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 1 )
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Label
 
@@ -23,6 +23,19 @@ onready var end_timer = get_node(\"EndTimer\")
 
 signal finished
 
+var queue = []
+var busy = false
+
+func _ready():
+	set_fixed_process(true)
+
+func _fixed_process(delta):
+	if !busy and !queue.empty():
+		busy = true
+		var nodes = queue.front()
+		queue.pop_front()
+		display_speech(nodes)
+
 func display_speech(nodes):
 	clear()
 	for step in nodes:
@@ -31,9 +44,16 @@ func display_speech(nodes):
 			yield(self, \"finished\")
 			delay_timer.start()
 			yield(delay_timer, \"timeout\")
+		if nodes == null:
+			break
 	end_timer.start()
 	yield(end_timer, \"timeout\")
+	set_visible_characters(0)
 	clear()
+	busy = false
+
+func queue_speech(nodes):
+	queue.append(nodes)
 
 func clear():
 	set_text(\"\")
@@ -42,14 +62,16 @@ func append(text):
 	var k = get_visible_characters()
 	set_text(get_text() + \" \" + text)
 	var n = get_total_character_count()
-	print(\"go %s\" % n)
-	tween.interpolate_method(self, \"set_visible_characters\", k, n, TIME_PER_CHAR*(n-k), Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	var time = TIME_PER_CHAR*(n-k)
+	print(\"tween for %s\" % time)
+	tween.stop(self, \"set_visible_characters\")
+	tween.interpolate_method(self, \"set_visible_characters\", k, n, time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 	yield(tween, \"tween_complete\")
 	emit_signal(\"finished\")
 "
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 
 font/size = 72
 extra_spacing/bottom = 16
@@ -76,11 +98,11 @@ margin/left = 80.0
 margin/top = 40.0
 margin/right = 80.0
 margin/bottom = 100.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = SubResource( 5 )
+script/script = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="Speech"]
 
@@ -114,7 +136,7 @@ margin/left = 944.0
 margin/top = 600.0
 margin/right = 1200.0
 margin/bottom = 680.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 range/min = 0.0
 range/max = 100.0
 range/step = 1.0

@@ -7,15 +7,13 @@ export(bool) var oneshot = true
 signal triggered
 
 func _ready():
-	pass
+	for shape in get_children():
+		add_shape(shape.get_shape())
+	yield(get_tree(), "fixed_frame")
+	connect("body_enter", self, "_check_character")
 
 func _check_character(body):
-	print("check")
 	if body extends CHARACTER:
-		print("huzzah")
 		emit_signal("triggered")
 		if oneshot:
-			disconnect(self, "enter_body", "_check")
-
-func _noop(body):
-	pass
+			disconnect("body_enter", self, "_check_character")
