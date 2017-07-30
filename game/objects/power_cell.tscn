@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://objects/power_cell.gd" type="Script" id=1]
 [ext_resource path="res://objects/interaction_area.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/powercell.tex" type="Texture" id=3]
 [ext_resource path="res://objects/updown.tex" type="Texture" id=4]
 [ext_resource path="res://hud/digital-7.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60, 50 )
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -26,6 +31,10 @@ script/script = ExtResource( 1 )
 power_cell_id = null
 
 [node name="Area2D" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" parent="Area2D"]
+
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -64,3 +73,4 @@ playback/repeat = false
 playback/speed = 1.0
 
 
+[editable path="Area2D"]
