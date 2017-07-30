@@ -42,17 +42,19 @@ margin/bottom = 0.0
 
 [node name="ugd" type="TextureFrame" parent="Images"]
 
-anchor/right = 1
-anchor/bottom = 1
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
 rect/scale = Vector2( 0.25, 0.25 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 251.0
-margin/top = 130.0
-margin/right = 0.0
-margin/bottom = 80.0
+margin/left = 200.0
+margin/top = 200.0
+margin/right = 200.0
+margin/bottom = 200.0
 texture = ExtResource( 2 )
 stretch_mode = 6
 

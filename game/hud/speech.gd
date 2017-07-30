@@ -9,4 +9,4 @@ func _ready():
 		go()
 
 func go():
-	speech_label.queue_speech(get_children())
+	speech_label.queue_speech(self)
