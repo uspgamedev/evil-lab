@@ -13,12 +13,24 @@ tile_data = IntArray( -983056, 1, -983055, 1, -983054, 1, -983053, 1, -983052, 1
 
 transform/pos = Vector2( -320, -16 )
 
-[node name="Door" parent="." instance=ExtResource( 2 )]
+[node name="StorageDoor" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -320, -144 )
 target_room_name = "storage_room"
+spawn_tag = "CafeteriaDoor"
+
+[node name="PowerRoomDoor" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 672, -144 )
+target_room_name = "storage_room"
 spawn_tag = "FromCafeteria"
 
-[connection signal="exit_room" from="Door" to="." method="exit_room"]
+[node name="CorridorDoor" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 1280, -144 )
+target_room_name = "storage_room"
+spawn_tag = "FromCafeteria"
+
+[connection signal="exit_room" from="StorageDoor" to="." method="exit_room"]
 
 
