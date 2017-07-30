@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/trigger_area.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 200, 120 )
 
 [node name="Cafeteria" instance=ExtResource( 1 )]
 
@@ -31,10 +39,35 @@ transform/pos = Vector2( 672, -144 )
 target_room_name = "corridor"
 spawn_tag = "CafeteriaDoor"
 
+[node name="Speech" parent="." instance=ExtResource( 3 )]
+
+[node name="Text" parent="Speech" instance=ExtResource( 4 )]
+
+text = "I locked the cafeteria door."
+
+[node name="Text1" parent="Speech" instance=ExtResource( 4 )]
+
+text = "Gotta turn off the lock in the power room to leave."
+
+[node name="TriggerArea" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 672, -128 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [connection signal="exit_room" from="StorageDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="PowerRoomDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
+
+[connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
 
 
