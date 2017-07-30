@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+export(String, MULTILINE) var text
+"
+
+[node name="Text" type="Node"]
+
+script/script = SubResource( 1 )
+text = null
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 0
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=4]
 
 [node name="StorageRoom" instance=ExtResource( 1 )]
 
@@ -18,6 +20,18 @@ transform/pos = Vector2( 480, 0 )
 transform/pos = Vector2( 0, -144 )
 target_room_name = "cafeteria"
 spawn_tag = "StorageDoor"
+
+[node name="Speech" parent="." instance=ExtResource( 3 )]
+
+autostart = true
+
+[node name="Text" parent="Speech" instance=ExtResource( 4 )]
+
+text = "I've come this far."
+
+[node name="Text1" parent="Speech" instance=ExtResource( 4 )]
+
+text = "Can't give up now."
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
 
