@@ -38,8 +38,12 @@ spawn_tag = "Hall1FDoor"
 [node name="MaintenanceDoor" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 496, -144 )
+target_room_name = "maintenance_room"
+spawn_tag = "Hall1FDoor"
 
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
+
+[connection signal="exit_room" from="MaintenanceDoor" to="." method="exit_room"]
 
 
 [editable path="Elevator"]
