@@ -2,7 +2,7 @@ extends 'res://objects/body.gd'
 
 const ACT = preload("res://definitions/actions.gd")
 const MAX_POWER = 100
-const MAX_BATTERY = 20
+const MAX_BATTERY = 22
 const MIN_BATTERY = 2
 const BATTERY_DEPLETION_RATE = .2
 
