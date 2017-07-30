@@ -6,7 +6,7 @@
 [ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/character/light.tex" type="Texture" id=5]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 
 resource/name = "down_idle"
 length = 1.0
@@ -145,7 +145,7 @@ step = 0.1
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -30, -220, 30, -220, 30, -5, -30, -5 )
+points = Vector2Array( -30, -220, 30, -220, 30, -16, -30, -16 )
 
 [node name="Character" instance=ExtResource( 1 )]
 
@@ -161,7 +161,7 @@ hframes = 4
 
 [node name="Animation" parent="Sprite"]
 
-anims/down_idle = SubResource( 10 )
+anims/down_idle = SubResource( 1 )
 anims/down_moving = SubResource( 2 )
 anims/left_idle = SubResource( 3 )
 anims/left_moving = SubResource( 4 )

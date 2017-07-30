@@ -11,7 +11,7 @@ const SPEEDLIMIT = ACC * 5
 
 signal speed_changed(speed)
 
-var speed = Vector2()
+onready var speed = Vector2()
 
 onready var animation = get_node("Sprite/Animation")
 
@@ -31,6 +31,8 @@ func push(dir_vec):
     emit_signal("speed_changed", speed)
 
 func pvt_apply_speed(delta):
+  if self.speed.length_squared() <= CONST.EPSILON*CONST.EPSILON:
+    return
   var motion_scale = self.speed * delta
   var motion = move(motion_scale)
   if is_colliding():

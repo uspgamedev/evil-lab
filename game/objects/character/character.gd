@@ -35,6 +35,11 @@ func recharge_power_bank():
 			timer = 0
 			power_bank += 10
 
+func _ready():
+	var floor_level = get_pos()
+	floor_level.y = 0
+	set_pos(floor_level)
+
 func set_nearby_interactable(object):
 	interactable = object
 
