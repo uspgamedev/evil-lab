@@ -11,6 +11,7 @@ points = Vector2Array( -80, -240, 80, -240, 80, 0, -80, 0 )
 
 [node name="FlickeringMonster" instance=ExtResource( 1 )]
 
+collision/layers = 4
 script/script = ExtResource( 2 )
 
 [node name="Sprite" parent="."]
