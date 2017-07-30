@@ -9,6 +9,7 @@ export(String) var target_room_name
 export(String) var spawn_tag
 
 signal exit_room(target_room_name, spawn_tag)
+signal opened
 
 func _ready():
 	set_fixed_process(true)
@@ -19,6 +20,8 @@ func _fixed_process(delta):
 		is_open = false
 	else:
 		sprite.set_texture(open_door)
+		if !is_open:
+			emit_signal("opened")
 		is_open = true
 
 func interact(character):
