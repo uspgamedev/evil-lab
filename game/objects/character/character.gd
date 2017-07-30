@@ -3,12 +3,15 @@ extends 'res://objects/body.gd'
 const ACT = preload("res://definitions/actions.gd")
 const MAX_POWER = 100
 const MAX_BATTERY = 20
+const MIN_BATTERY = 2
 
 var light_battery = MAX_BATTERY
 var power_bank = MAX_POWER
 var interactable
 var timer = 0
-onready var light = get_node("Light2D")
+var stored_battery
+var light_on = true
+onready var light = get_node("Lamp/Light2D")
 onready var power_tween = get_node("PowerTween")
 onready var light_tween = get_node("LightTween")
 onready var energy_tween = get_node("EnergyTween")
@@ -24,29 +27,26 @@ func _fixed_process(delta):
 	light.set_energy(float(light_battery)/20)
 
 func battery_depletion(delta):
-	if (light_battery > 2):
+	if (light_on and light_battery > MIN_BATTERY):
 		timer += delta
 		if (timer >= 1):
 			timer = 0
-			light_battery -= 2
+			light_battery -= MIN_BATTERY
 
 func recharge_power_bank():
-	var timer = 0
-	while (power_bank < MAX_POWER):
-		timer += 1
-		if (timer > 120):
-			timer = 0
-			power_bank += 10
+	var time = 6 - power_bank/25
+	change_value(power_tween, self, "power_bank", power_bank, MAX_POWER, time)
+	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(MAX_POWER, time)
 
 func set_nearby_interactable(object):
 	interactable = object
 
 func reload_light_battery():
-	var time = 1 - float(light_battery)/MAX_BATTERY
-	change_value(power_tween, self, "power_bank", power_bank, power_bank-(MAX_BATTERY-light_battery), time)
-	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank-(MAX_BATTERY-light_battery), time)
-	change_value(light_tween, self, "light_battery", light_battery, MAX_BATTERY, time)
-	#change_value(energy_tween, light, 'energy', light.get_energy(), float(light_battery)/20, time)
+	if (light_on):
+		var time = 1 - float(light_battery)/MAX_BATTERY
+		change_value(power_tween, self, "power_bank", power_bank, power_bank-(MAX_BATTERY-light_battery), time)
+		get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank-(MAX_BATTERY-light_battery), time)
+		change_value(light_tween, self, "light_battery", light_battery, MAX_BATTERY, time)
 
 func change_value(tween, object, property, current_value, new_value, time):
 	tween.interpolate_property(object, property, current_value, new_value, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -55,10 +55,13 @@ func change_value(tween, object, property, current_value, new_value, time):
 
 func _pressing_act(act):
 	if (act == ACT.LIGHT):
-		if (self.light.is_hidden()):
-			self.light.show()
+		if (!light_on):
+			light_on = true
+			light_battery = stored_battery
 		else:
-			self.light.hide()
+			light_on = false
+			stored_battery = light_battery
+			light_battery = MIN_BATTERY
 	if (act == ACT.RELOAD):
 		reload_light_battery()
 	if (act == ACT.INTERACT):
