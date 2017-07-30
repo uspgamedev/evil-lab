@@ -11,7 +11,7 @@ func _ready():
 	power_cell.activate()
 
 func has_power():
-	return get_power()/POWER_CELL.MAX_POWER_CELL > threshold
+	return 1.0*get_power()/POWER_CELL.MAX_POWER_CELL > threshold
 
 func get_power():
 	return power_cell.get_power_cell_energy()

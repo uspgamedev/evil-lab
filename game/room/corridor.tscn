@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/powered_devices/powered_door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+const MONSTER = preload(\"res://objects/monster/flickering_monster.tscn\")
+
+func spawn():
+	var monster = MONSTER.instance()
+	monster.set_pos(get_pos())
+	monster.character = get_parent().character
+	get_parent().add_child(monster)
+	queue_free()
+"
 
 [node name="Corridor" instance=ExtResource( 1 )]
 
@@ -54,11 +68,18 @@ transform/pos = Vector2( 336, -176 )
 transform/pos = Vector2( 960, -160 )
 power_cell_id = "CorridorOfficeDoor"
 
+[node name="Spawn" type="Node2D" parent="."]
+
+transform/pos = Vector2( 720, 0 )
+script/script = SubResource( 1 )
+
 [connection signal="exit_room" from="EntranceDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="OfficeDoor" to="." method="exit_room"]
+
+[connection signal="opened" from="OfficeDoor" to="Spawn" method="spawn"]
 
 [connection signal="exit_room" from="Hall1FDoor" to="." method="exit_room"]
 
