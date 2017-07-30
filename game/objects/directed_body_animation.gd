@@ -4,18 +4,23 @@ extends AnimationPlayer
 const DIRS = preload("res://definitions/directions.gd")
 const CONST = preload("res://definitions/constants.gd")
 
+var last_dir = "left_"
+
 func track_movement(speed):
-  var dir = DIRS.vec2dir(speed)
-  if dir == DIRS.NONE: return
-  dir = pvt_dirface(dir)
-  var anim_type
-  if speed.length_squared() > CONST.EPSILON*CONST.EPSILON:
-    anim_type = "moving"
-  else:
-    anim_type = "idle"
-  var anim = pvt_dirname(dir) + anim_type
-  if get_current_animation() != anim:
-      play(anim)
+	var dir = DIRS.vec2dir(speed)
+	var anim_type
+	if dir == DIRS.NONE:
+		anim_type = "idle"
+	else:
+		if speed.length_squared() > CONST.EPSILON*CONST.EPSILON:
+			anim_type = "moving"
+		else:
+			anim_type = "idle"
+	dir = pvt_dirface(dir)
+	self.last_dir = pvt_dirname(dir)
+	var anim = last_dir + anim_type
+	if get_current_animation() != anim:
+		play(anim)
 
 func pvt_dirface(dir):
   if dir == DIRS.UP:
@@ -45,4 +50,4 @@ func pvt_dirname(dir):
   elif dir == DIRS.LEFT:
       return "left_"
   else:
-      return "down_"
+      return last_dir

@@ -45,12 +45,3 @@ func pvt_apply_speedlimit(delta):
   if self.speed.length_squared() <= CONST.EPSILON*CONST.EPSILON:
     self.speed.x = 0
     self.speed.y = 0
-
-func _pressing_act(act):
-	if (act == ACT.LIGHT):
-		if (self.get_node("Light2D").is_hidden()):
-			self.get_node("Light2D").show()
-		else:
-			self.get_node("Light2D").hide()
-	if (act == ACT.RELOAD):
-		pass
