@@ -21,12 +21,11 @@ func _input(event):
 			var power_bank_transfer = min(player.get_power_bank(), min(10, MAX_POWER_CELL - power_cell))
 			player.transfer_power(-power_bank_transfer)
 			power_cell += power_bank_transfer
-			label.set_text(str(power_cell) + '%')
 		elif (event.is_action_pressed("ui_down")):
 			var power_bank_transfer = min(100 - player.get_power_bank(), min(10, power_cell))
 			player.transfer_power(power_bank_transfer)
 			power_cell -= power_bank_transfer
-			label.set_text(str(power_cell) + '%')
+		label.set_text(str(int(power_cell)) + '%')
 		sprite.set_frame(power_cell/10)
 
 func interact(character):
