@@ -36,6 +36,8 @@ stream/buffering_ms = 500
 
 [node name="PowerCells" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="CafeteriaCorridorDoor" parent="PowerCells" instance=ExtResource( 4 )]
 
 initial_power = 25
@@ -60,13 +62,7 @@ initial_power = 35
 
 initial_power = 45
 
-[node name="Altar" parent="PowerCells" instance=ExtResource( 4 )]
-
-initial_power = 0
-
 [node name="Events" type="Node" parent="."]
-
-editor/display_folded = true
 
 [node name="UnlockBasement" type="Node" parent="Events"]
 
