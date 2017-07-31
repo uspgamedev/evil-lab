@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
 [ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
-[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
-[ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/character/passo.smp" type="Sample" id=6]
-[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=7]
-[ext_resource path="res://objects/character/lamp.tex" type="Texture" id=8]
-[ext_resource path="res://objects/character/light.tex" type="Texture" id=9]
-[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/character/cientista rs.tex" type="Texture" id=4]
+[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=5]
+[ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/character/passo.smp" type="Sample" id=7]
+[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=8]
+[ext_resource path="res://objects/character/lamp.tex" type="Texture" id=9]
+[ext_resource path="res://objects/character/light.tex" type="Texture" id=10]
+[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -24,6 +25,63 @@ resource/name = "down_moving"
 length = 1.0
 loop = false
 step = 0.1
+
+[sub_resource type="Animation" id=10]
+
+resource/name = "laughter"
+length = 4.0
+loop = false
+step = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:transform/pos")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -59,7 +117,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
@@ -80,6 +138,16 @@ tracks/4/keys = {
 "transitions": FloatArray( 1 ),
 "update": 0,
 "values": [ Vector2( -40, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:hframes")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 1.6 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 4 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -138,6 +206,16 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( -40, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:hframes")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 1.2 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=5]
 
@@ -173,7 +251,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
@@ -184,6 +262,16 @@ tracks/3/keys = {
 "transitions": FloatArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 84, -142 ), Vector2( 84, -140 ), Vector2( 84, -138 ), Vector2( 84, -140 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:hframes")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 4 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -242,6 +330,16 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 40, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:hframes")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=7]
 
@@ -269,10 +367,11 @@ script/script = ExtResource( 2 )
 
 [node name="Sprite" parent="."]
 
-transform/pos = Vector2( 40, 0 )
+transform/pos = Vector2( -40, 0 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -60 )
+flip_h = true
 hframes = 4
 frame = 1
 
@@ -280,6 +379,7 @@ frame = 1
 
 anims/down_idle = SubResource( 1 )
 anims/down_moving = SubResource( 2 )
+anims/laughter = SubResource( 10 )
 anims/left_idle = SubResource( 3 )
 anims/left_moving = SubResource( 4 )
 anims/right_idle = SubResource( 5 )
@@ -291,13 +391,13 @@ anims/up_moving = SubResource( 8 )
 
 shape = SubResource( 9 )
 
-[node name="SFX" parent="." instance=ExtResource( 5 )]
+[node name="SFX" parent="." instance=ExtResource( 6 )]
 
-sample = ExtResource( 6 )
+sample = ExtResource( 7 )
 
 [node name="DeathStreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 7 )
+stream/stream = ExtResource( 8 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 10.0
@@ -310,7 +410,7 @@ stream/buffering_ms = 500
 
 transform/pos = Vector2( 84, -134 )
 transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 hframes = 2
 
 [node name="Light2D" type="Light2D" parent="Lamp"]
@@ -318,7 +418,7 @@ hframes = 2
 transform/scale = Vector2( 0.5, 0.5 )
 enabled = true
 editor_only = false
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 1, 1, 1, 1 )
@@ -339,7 +439,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="KeyboardDirectional" parent="." instance=ExtResource( 10 )]
+[node name="KeyboardDirectional" parent="." instance=ExtResource( 11 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
