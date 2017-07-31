@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/powered_devices/computer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://room/decoration/table_0.tex" type="Texture" id=4]
+[ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/powered_devices/gate.tscn" type="PackedScene" id=6]
 
 [node name="ControlRoom" instance=ExtResource( 1 )]
 
@@ -16,6 +20,26 @@ target_room_name = "hall2f"
 spawn_tag = "ControlRoomDoor"
 
 [node name="Start" type="Node2D" parent="."]
+
+[node name="Computer" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 500, -171 )
+power_cell_id = "Computer"
+
+[node name="Table" type="Sprite" parent="."]
+
+transform/pos = Vector2( 500, -64 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="PowerCell" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -1008, -160 )
+power_cell_id = "Computer"
+
+[node name="Gate" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -880, -144 )
 
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
