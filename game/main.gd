@@ -105,5 +105,7 @@ func end_game(pos, texture):
 	get_node("HUD").free()
 	self.add_child(fader)
 	fader.fade_out()
+	get_node("StreamPlayer").set_volume(0)
 	yield(fader, "faded_out")
 	get_tree().change_scene(GAMEOVER_PATH)
+

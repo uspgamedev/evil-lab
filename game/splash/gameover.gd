@@ -26,6 +26,7 @@ func show_text(current_phrase):
 	print("ok, now press the button!")
 
 func goback(action_pressed):
+	input.disconnect("pressing_act", self, "goback")
 	print("button pressed!")
 	tween.interpolate_method(death_text, "set_opacity", 1, 0, 1.25,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
