@@ -6,7 +6,8 @@ const MAX_LAB_POWER = 300
 const MIN_LAB_POWER = 0
 const LAB_POWER_DEPLETION_RATE = .3
 
-export(String) var first_room
+export (String, FILE, "*.tscn") var GAMEOVER_PATH
+export (String) var first_room
 
 onready var character = CHARACTER.instance()
 onready var power_cells = get_node("PowerCells")
@@ -105,4 +106,4 @@ func end_game(pos, texture):
 	self.add_child(fader)
 	fader.fade_out()
 	yield(fader, "faded_out")
-	get_tree().quit()
+	get_tree().change_scene(GAMEOVER_PATH)
