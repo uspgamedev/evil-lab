@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://objects/powered_devices/basic_powered_device.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/powered_devices/computer.gd" type="Script" id=2]
 [ext_resource path="res://objects/powered_devices/computer_1_on.tex" type="Texture" id=3]
+[ext_resource path="res://objects/powered_devices/teclado2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -33,6 +36,7 @@ transform/scale = Vector2( 1.5, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 hframes = 2
@@ -47,5 +51,30 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 4 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 10.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="Speech" parent="." instance=ExtResource( 5 )]
+
+[node name="Text" parent="Speech" instance=ExtResource( 6 )]
+
+text = "There."
+
+[node name="Text1" parent="Speech" instance=ExtResource( 6 )]
+
+text = "The basement should be open now."
+
+[node name="Text2" parent="Speech" instance=ExtResource( 6 )]
+
+text = "Everything will be over soon."
 
 

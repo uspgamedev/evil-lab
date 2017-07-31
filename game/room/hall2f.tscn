@@ -17,12 +17,13 @@ tile_data = IntArray( -327690, -1073741806, -327689, -1073741808, -327688, -1073
 transform/pos = Vector2( -512, -144 )
 target_room_name = "control_room"
 spawn_tag = "Hall2FDoor"
+locked = false
 
 [node name="Elevator" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 0, -184 )
 power_cell_id = "Elevator"
-threshold = 0.7
+threshold = 0.6
 target_room_name = "hall1f"
 spawn_tag = "Elevator"
 
@@ -31,6 +32,7 @@ spawn_tag = "Elevator"
 transform/pos = Vector2( 496, -144 )
 target_room_name = "survaillance_room"
 spawn_tag = "Hall2FDoor"
+locked = false
 
 [node name="Sprite" type="Sprite" parent="."]
 
