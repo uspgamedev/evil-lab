@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+export(PackedScene) var scene
+
+func spawn():
+	var obj = scene.instance()
+	obj.set_pos(get_pos())
+	obj.character = get_parent().character
+	get_parent().add_child(obj)
+	queue_free()
+"
+
+[node name="Spawner" type="Node2D"]
+
+script/script = SubResource( 1 )
+scene = null
+
+

@@ -11,6 +11,9 @@ onready var sprite = get_node('Sprite')
 onready var label = get_node("Arrow/Label")
 onready var data = get_tree().get_root().get_node("Main").get_power_cell(power_cell_id)
 
+signal interaction_started
+signal interaction_ended
+
 func _ready():
 	set_process_input(true)
 	set_process(true)
@@ -34,9 +37,11 @@ func interact(character):
 	if (!arrow.is_hidden()):
 		arrow.hide()
 		player.enable_movement()
+		emit_signal("interaction_ended")
 	else:
 		arrow.show()
 		player.disable_movement()
+		emit_signal("interaction_started")
 
 func get_power_cell_energy():
 	return data.get_power_cell_energy()
