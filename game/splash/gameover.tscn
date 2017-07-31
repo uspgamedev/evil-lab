@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://splash/gameover.gd" type="Script" id=1]
+[ext_resource path="res://hud/SpecialElite.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://input/keyboard_actions.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[node name="gameover" type="Node2D"]
+
+script/script = ExtResource( 1 )
+PHRASES = StringArray( "You were never heard from again...", "Your death was horrible and painful.", "Your flesh became food for the abominations...", "Death comes to us all..." )
+MAIN_MENU_PATH = "res://main.tscn"
+
+[node name="tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="death_text" type="Label" parent="."]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
+custom_fonts/font = SubResource( 1 )
+text = "Death text."
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="input" type="Node2D" parent="."]
+
+script/script = ExtResource( 3 )
+
+
