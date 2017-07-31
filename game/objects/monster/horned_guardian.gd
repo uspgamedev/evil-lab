@@ -1,5 +1,7 @@
 extends Node2D
 
+export (NodePath) var character
+
 signal landed
 
 onready var anim = get_node("AnimationPlayer")
@@ -19,4 +21,4 @@ func _fixed_process(delta):
 func _within_reach():
 	anim.play("gouge")
 	yield(anim, "finished")
-	get_tree().quit()
+	character.die()

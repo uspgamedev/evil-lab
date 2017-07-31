@@ -20,9 +20,10 @@ script/source = "extends Node2D
 
 const HORNED_GUARDIAN = preload(\"res://objects/monster/horned_guardian.tscn\")
 
-func spawn():
+func spawn(character):
 	get_parent().character.disable_movement()
 	var horned = HORNED_GUARDIAN.instance()
+	horned.character = character
 	horned.set_pos(get_pos())
 	get_parent().add_child(horned)
 	queue_free()
