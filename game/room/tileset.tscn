@@ -178,7 +178,7 @@ __meta__ = {
 [node name="FGWhiteWallHalf" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 286.341, 408.089 )
+transform/pos = Vector2( 285.113, 408.089 )
 texture = ExtResource( 16 )
 modulate = Color( 0.675781, 0.675781, 0.675781, 1 )
 
