@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
 [ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
 [ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
-[ext_resource path="res://objects/character/lamp.tex" type="Texture" id=5]
-[ext_resource path="res://objects/character/light.tex" type="Texture" id=6]
-[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=5]
+[ext_resource path="res://objects/character/lamp.tex" type="Texture" id=6]
+[ext_resource path="res://objects/character/light.tex" type="Texture" id=7]
+[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -287,11 +288,22 @@ anims/up_moving = SubResource( 8 )
 
 shape = SubResource( 9 )
 
+[node name="DeathStreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 5 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 24.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
 [node name="Lamp" type="Sprite" parent="."]
 
 transform/pos = Vector2( 92, -132 )
 transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 hframes = 2
 
 [node name="Light2D" type="Light2D" parent="Lamp"]
@@ -299,7 +311,7 @@ hframes = 2
 transform/scale = Vector2( 0.5, 0.5 )
 enabled = true
 editor_only = false
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 1, 1, 1, 1 )
@@ -320,7 +332,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="KeyboardDirectional" parent="." instance=ExtResource( 7 )]
+[node name="KeyboardDirectional" parent="." instance=ExtResource( 8 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

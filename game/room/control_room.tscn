@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://room/decoration/table_0.tex" type="Texture" id=4]
 [ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/powered_devices/gate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/monster/crawler.tscn" type="PackedScene" id=7]
 
 [node name="ControlRoom" instance=ExtResource( 1 )]
 
@@ -51,6 +52,10 @@ power_cell_id = "SecondGate"
 
 transform/pos = Vector2( 240, -176 )
 power_cell_id = "SecondGate"
+
+[node name="Crawler" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -1136, 0 )
 
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 

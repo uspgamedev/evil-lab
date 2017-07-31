@@ -7,7 +7,7 @@ const MIN_BATTERY = 2
 const BATTERY_DEPLETION_RATE = .4
 
 var light_battery = MAX_BATTERY
-var power_bank = MAX_POWER#/10.0
+var power_bank = MAX_POWER/10.0
 var interactable
 var lock = false
 var stored_battery
@@ -87,6 +87,7 @@ func disable_movement():
 func die():
 	var camera = get_node("Camera2D")
 	var pos = camera.get_camera_pos()
+	var stream_player = get_node("DeathStreamPlayer")
 	get_viewport().queue_screen_capture()
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
@@ -94,5 +95,7 @@ func die():
 	var texture = ImageTexture.new()
 	texture.create(capture.get_width(), capture.get_height(), capture.get_format())
 	texture.set_data(capture)
+	stream_player.set_volume(4)
+	stream_player.play()
 	set_fixed_process(false)
 	emit_signal("end_game", pos, texture)
