@@ -12,9 +12,11 @@ var interactable
 var lock = false
 var stored_battery
 var light_on = true
+var stepping = false
 onready var light = get_node("Lamp/Light2D")
 onready var power_tween = get_node("PowerTween")
 onready var light_tween = get_node("LightTween")
+onready var step_timer = get_node("step_timer")
 
 signal end_game(pos, texture)
 
@@ -98,3 +100,12 @@ func die():
 	texture.set_data(capture)
 	set_fixed_process(false)
 	emit_signal("end_game", pos, texture)
+
+func _on_Character_speed_changed( speed ):
+	if speed.length_squared() > 0 and not stepping:
+		step_timer.start()
+		stepping = true
+	elif speed.length_squared() == 0:
+		step_timer.stop()
+		stepping = false
+

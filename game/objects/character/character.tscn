@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
 [ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
 [ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
-[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=5]
-[ext_resource path="res://objects/character/lamp.tex" type="Texture" id=6]
-[ext_resource path="res://objects/character/light.tex" type="Texture" id=7]
-[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/character/passo.smp" type="Sample" id=6]
+[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=7]
+[ext_resource path="res://objects/character/lamp.tex" type="Texture" id=8]
+[ext_resource path="res://objects/character/light.tex" type="Texture" id=9]
+[ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -272,6 +274,7 @@ transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -60 )
 hframes = 4
+frame = 1
 
 [node name="Animation" parent="Sprite"]
 
@@ -288,9 +291,13 @@ anims/up_moving = SubResource( 8 )
 
 shape = SubResource( 9 )
 
+[node name="SFX" parent="." instance=ExtResource( 5 )]
+
+sample = ExtResource( 6 )
+
 [node name="DeathStreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 5 )
+stream/stream = ExtResource( 7 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 10.0
@@ -301,9 +308,9 @@ stream/buffering_ms = 500
 
 [node name="Lamp" type="Sprite" parent="."]
 
-transform/pos = Vector2( 92, -132 )
+transform/pos = Vector2( 84, -134 )
 transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 hframes = 2
 
 [node name="Light2D" type="Light2D" parent="Lamp"]
@@ -311,7 +318,7 @@ hframes = 2
 transform/scale = Vector2( 0.5, 0.5 )
 enabled = true
 editor_only = false
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 offset = Vector2( 0, 0 )
 scale = 2.0
 color = Color( 1, 1, 1, 1 )
@@ -332,7 +339,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="KeyboardDirectional" parent="." instance=ExtResource( 8 )]
+[node name="KeyboardDirectional" parent="." instance=ExtResource( 10 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -368,8 +375,19 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="step_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.6
+one_shot = false
+autostart = false
+
+[connection signal="speed_changed" from="." to="." method="_on_Character_speed_changed"]
+
 [connection signal="pressing_act" from="Actions" to="." method="_pressing_act"]
 
 [connection signal="pressing_dir" from="KeyboardDirectional" to="." method="push_dir"]
+
+[connection signal="timeout" from="step_timer" to="SFX" method="go"]
 
 
