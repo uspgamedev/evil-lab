@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/charger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://room/decoration/security_table_0.tex" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "idle"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.25 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="SurvaillanceRoom" instance=ExtResource( 1 )]
 
@@ -14,6 +33,29 @@ tile_data = IntArray( -327684, -1073741806, -327683, -1073741808, -327682, -1073
 transform/pos = Vector2( 432, -144 )
 target_room_name = "hall2f"
 spawn_tag = "SurvaillanceDoor"
+
+[node name="Charger" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 176, -160 )
+
+[node name="Survaillance" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -64, -112 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Survaillance"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/idle = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "idle"
 
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
