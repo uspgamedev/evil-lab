@@ -28,8 +28,7 @@ func push_dir(dir):
 
 func push(dir_vec):
     self.speed += dir_vec * ACC
-    if ACC > 0:
-        emit_signal("speed_changed", speed)
+    emit_signal("speed_changed", speed)
 
 func pvt_apply_speed(delta):
   if self.speed.length_squared() <= CONST.EPSILON*CONST.EPSILON:
