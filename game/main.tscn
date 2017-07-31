@@ -18,7 +18,7 @@ func go():
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
-first_room = "corridor"
+first_room = "hall2f"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
