@@ -1,9 +1,12 @@
 extends "res://objects/powered_devices/basic_powered_device.gd"
 
-onready var sprite = get_node('Sprite')
-onready var anim = sprite.get_node('AnimationPlayer')
 onready var off = load('res://objects/powered_devices/computer_1_off.tex')
 onready var on = load('res://objects/powered_devices/computer_1_on.tex')
+
+onready var sprite = get_node('Sprite')
+onready var anim = sprite.get_node('AnimationPlayer')
+onready var sound = get_node('StreamPlayer')
+onready var speech = get_node('Speech')
 
 func _ready():
 	set_fixed_process(true)
@@ -21,4 +24,6 @@ func _fixed_process(delta):
 
 func interact(character):
 	if (has_power()):
-		print('hacking')
+		sound.play()
+		speech.go()
+		get_node("/root/Main/Events/UnlockBasement").go()

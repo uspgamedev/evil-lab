@@ -15,7 +15,7 @@ font/font = ExtResource( 1 )
 
 script/source = "extends Label
 
-const TIME_PER_CHAR = 0.1
+const TIME_PER_CHAR = 0.03
 
 onready var tween = get_node(\"Tween\")
 onready var delay_timer = get_node(\"DelayTimer\")
@@ -121,14 +121,14 @@ playback/speed = 1.0
 [node name="DelayTimer" type="Timer" parent="Speech"]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 0.4
 one_shot = true
 autostart = false
 
 [node name="EndTimer" type="Timer" parent="Speech"]
 
 process_mode = 0
-wait_time = 4.0
+wait_time = 2.0
 one_shot = true
 autostart = false
 
