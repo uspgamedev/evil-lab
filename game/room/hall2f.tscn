@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/door/temp-elevator.tex" type="Texture" id=3]
+[ext_resource path="res://objects/powered_devices/elevator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://room/decoration/blood2.tex" type="Texture" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 90, 144 )
 
 [node name="Hall2F" instance=ExtResource( 1 )]
 
@@ -16,28 +11,19 @@ extents = Vector2( 90, 144 )
 
 tile_data = IntArray( -327690, -1073741806, -327689, -1073741808, -327688, -1073741808, -327687, -1073741808, -327686, -1073741808, -327685, -1073741808, -327684, -1073741808, -327683, -1073741808, -327682, -1073741808, -327681, -1073741808, -393216, -1073741808, -393215, -1073741808, -393214, -1073741808, -393213, -1073741808, -393212, -1073741808, -393211, -1073741808, -393210, -1073741808, -393209, -1073741808, -393208, -1073741808, -393207, 18, -262154, 1610612752, -262153, -1073741822, -262152, -1073741822, -262151, -1073741822, -262150, -1073741822, -262149, -1073741822, -262148, -1073741822, -262147, -1073741822, -262146, -1073741822, -262145, -1073741822, -327680, -1073741822, -327679, -1073741822, -327678, -1073741822, -327677, -1073741822, -327676, -1073741822, -327675, -1073741822, -327674, -1073741822, -327673, -1073741822, -327672, -1073741822, -327671, 16, -196618, 1610612752, -196617, -1073741822, -196616, -1073741822, -196615, -1073741822, -196614, -1073741822, -196613, -1073741822, -196612, -1073741822, -196611, -1073741822, -196610, -1073741822, -196609, -1073741822, -262144, -1073741822, -262143, -1073741822, -262142, -1073741822, -262141, -1073741822, -262140, -1073741822, -262139, -1073741822, -262138, -1073741822, -262137, -1073741822, -262136, -1073741822, -262135, 16, -131082, 1610612752, -131081, -1073741822, -131080, -1073741822, -131079, -1073741822, -131078, -1073741822, -131077, -1073741822, -131076, -1073741822, -131075, -1073741822, -131074, -1073741822, -131073, -1073741822, -196608, -1073741822, -196607, -1073741822, -196606, -1073741822, -196605, -1073741822, -196604, -1073741822, -196603, -1073741822, -196602, -1073741822, -196601, -1073741822, -196600, -1073741822, -196599, 16, -65546, 1610612752, -65545, -1073741822, -65544, -1073741822, -65543, -1073741822, -65542, -1073741822, -65541, -1073741822, -65540, -1073741822, -65539, -1073741822, -65538, -1073741822, -65537, -1073741822, -131072, -1073741822, -131071, -1073741822, -131070, -1073741822, -131069, -1073741822, -131068, -1073741822, -131067, -1073741822, -131066, -1073741822, -131065, -1073741822, -131064, -1073741822, -131063, 16, -10, 1610612752, -9, -1073741822, -8, -1073741822, -7, -1073741822, -6, -1073741822, -5, -1073741822, -4, -1073741822, -3, -1073741822, -2, -1073741822, -1, -1073741822, -65536, -1073741822, -65535, -1073741822, -65534, -1073741822, -65533, -1073741822, -65532, -1073741822, -65531, -1073741822, -65530, -1073741822, -65529, -1073741822, -65528, -1073741822, -65527, 16, 65526, 1610612754, 65527, 20, 65528, 20, 65529, 20, 65530, 20, 65531, 20, 65532, 20, 65533, 20, 65534, 20, 65535, 20, 0, 20, 1, 20, 2, 20, 3, 20, 4, 20, 5, 20, 6, 20, 7, 20, 8, 20, 9, -1610612718 )
 
-[node name="Elevator" parent="." instance=ExtResource( 2 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 0, -144 )
-target_room_name = "hall1f"
-spawn_tag = "Elevator"
-
-[node name="Sprite" parent="Elevator"]
-
-transform/pos = Vector2( 16, 0 )
-transform/scale = Vector2( 1, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" parent="Elevator/Area2D"]
-
-shape = SubResource( 1 )
-
 [node name="ControlRoomDoor" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -512, -144 )
 target_room_name = "control_room"
 spawn_tag = "Hall2FDoor"
+
+[node name="Elevator" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 0, -184 )
+power_cell_id = "Elevator"
+threshold = 0.7
+target_room_name = "hall1f"
+spawn_tag = "Elevator"
 
 [node name="SurvaillanceDoor" parent="." instance=ExtResource( 2 )]
 
@@ -59,12 +45,10 @@ texture = ExtResource( 4 )
 
 transform/pos = Vector2( -256, -176 )
 
-[connection signal="exit_room" from="Elevator" to="." method="exit_room"]
-
 [connection signal="exit_room" from="ControlRoomDoor" to="." method="exit_room"]
+
+[connection signal="character_exited" from="Elevator" to="." method="exit_room"]
 
 [connection signal="exit_room" from="SurvaillanceDoor" to="." method="exit_room"]
 
 
-[editable path="Elevator"]
-[editable path="Elevator/Area2D"]

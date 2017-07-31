@@ -8,7 +8,7 @@
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
-first_room = "corridor"
+first_room = "storage_room"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
@@ -25,6 +25,8 @@ stream/buffering_ms = 500
 
 [node name="PowerCells" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="CafeteriaCorridorDoor" parent="PowerCells" instance=ExtResource( 4 )]
 
 initial_power = 25
@@ -32,5 +34,9 @@ initial_power = 25
 [node name="CorridorOfficeDoor" parent="PowerCells" instance=ExtResource( 4 )]
 
 initial_power = 25
+
+[node name="Elevator" parent="PowerCells" instance=ExtResource( 4 )]
+
+initial_power = 10
 
 

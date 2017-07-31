@@ -35,7 +35,6 @@ func change_value(object, property, current_value, new_value, time):
 	can_charge = true
 
 func transfer(up):
-	print("transfer %s" % up)
 	if (can_charge):
 		if (up):
 			can_charge = false
