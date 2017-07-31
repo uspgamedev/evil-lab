@@ -1,6 +1,7 @@
 extends "res://objects/body.gd"
 
 const CHASE_DIST = 360
+const SPEED_FACTOR = 2*10
 
 var character = null
 var sacrifice = false
@@ -14,11 +15,11 @@ func _fixed_process(delta):
 		var dir = character.get_pos() - get_pos()
 		var dist = dir.length()
 		if dist < CHASE_DIST:
-			push(dir.normalized()/3.0/20.0)
-	else:
-		if randf() > 0.95:
-			direction *= -1
-		push(direction*Vector2(1,0)/20.0)
+			push(dir.normalized()/SPEED_FACTOR)
+		else:
+			if randf() > 0.97:
+				direction *= -1
+			push(direction*Vector2(1,0)/SPEED_FACTOR)
 
 func start_sacrifice(target):
 	pass

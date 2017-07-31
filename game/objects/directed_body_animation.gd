@@ -21,9 +21,6 @@ func track_movement(speed):
 	var anim = last_dir + anim_type
 	if get_current_animation() != anim:
 		play(anim)
-	if get_parent().get_parent().get_name() == "Crawler":
-		print(anim)
-		print(get_current_animation())
 
 func pvt_dirface(dir):
   if dir == DIRS.UP:
