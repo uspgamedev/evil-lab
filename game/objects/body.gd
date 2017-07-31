@@ -20,7 +20,8 @@ func _ready():
 func _fixed_process(delta):
     pvt_apply_speed(delta)
     pvt_apply_speedlimit(delta)
-    emit_signal("speed_changed", speed)
+    if ACC > 0:
+        emit_signal("speed_changed", speed)
 
 func push_dir(dir):
     push(DIR.dir2vec(dir))

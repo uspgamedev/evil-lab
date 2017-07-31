@@ -7,7 +7,7 @@ const MIN_BATTERY = 2
 const BATTERY_DEPLETION_RATE = .4
 
 var light_battery = MAX_BATTERY
-var power_bank = MAX_POWER/10.0
+var power_bank = MAX_POWER#/10.0
 var interactable
 var lock = false
 var stored_battery
