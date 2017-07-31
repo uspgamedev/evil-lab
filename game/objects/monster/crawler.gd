@@ -32,8 +32,7 @@ func cry():
 	timer.set_wait_time(5*randf())
 	timer.start()
 
-
 func check_character( body ):
 	if body == character:
 		if (get_pos() - body.get_pos()).length_squared() <= 160*160:
-			get_tree().quit()
+			body.die()

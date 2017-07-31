@@ -3,6 +3,8 @@ extends "res://objects/body.gd"
 const CHASE_DIST = 640
 
 onready var sprite = get_node("Sprite")
+onready var sfx = get_node("SFX")
+onready var timer = get_node("Timer")
 
 var character = null
 var intensity = 0
@@ -13,6 +15,12 @@ var flicker = 0
 func _ready():
 	set_fixed_process(true)
 	set_process(true)
+	cry()
+
+func cry():
+	sfx.go()
+	timer.set_wait_time(6+3*randf())
+	timer.start()
 
 func _fixed_process(delta):
 	if character != null:

@@ -5,9 +5,11 @@ export (NodePath) var character
 signal landed
 
 onready var anim = get_node("AnimationPlayer")
+onready var sfx = get_node("SFX")
 
 func _ready():
 	set_fixed_process(true)
+	sfx.go()
 
 func _fixed_process(delta):
 	if (get_pos().y < 0):

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://objects/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/monster/flickering_monster.gd" type="Script" id=2]
 [ext_resource path="res://objects/monster/monstro1.tex" type="Texture" id=3]
 [ext_resource path="res://objects/collisionfix.gd" type="Script" id=4]
+[ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/monster/monstros4.smp" type="Sample" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -48,6 +50,21 @@ trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 4 )
 
+[node name="SFX" parent="." instance=ExtResource( 5 )]
+
+params/attenuation/max_distance = 640.0
+config/pitch_random = -0.2
+sample = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 0
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 [connection signal="body_enter" from="Death" to="." method="check_character"]
+
+[connection signal="timeout" from="Timer" to="." method="cry"]
 
 
