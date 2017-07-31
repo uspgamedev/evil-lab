@@ -8,7 +8,7 @@
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
-first_room = "storage_room"
+first_room = "hall2f"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
@@ -40,5 +40,9 @@ initial_power = 10
 [node name="Computer" parent="PowerCells" instance=ExtResource( 4 )]
 
 initial_power = 5
+
+[node name="FirstGate" parent="PowerCells" instance=ExtResource( 4 )]
+
+initial_power = 45
 
 
