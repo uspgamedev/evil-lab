@@ -35,4 +35,5 @@ func cry():
 
 func check_character( body ):
 	if body == character:
-		get_tree().quit()
+		if (get_pos() - body.get_pos()).length_squared() <= 160*160:
+			get_tree().quit()
