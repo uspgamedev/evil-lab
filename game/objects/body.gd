@@ -20,14 +20,16 @@ func _ready():
 func _fixed_process(delta):
     pvt_apply_speed(delta)
     pvt_apply_speedlimit(delta)
-    emit_signal("speed_changed", speed)
+    if ACC > 0:
+        emit_signal("speed_changed", speed)
 
 func push_dir(dir):
     push(DIR.dir2vec(dir))
 
 func push(dir_vec):
     self.speed += dir_vec * ACC
-    emit_signal("speed_changed", speed)
+    if ACC > 0:
+        emit_signal("speed_changed", speed)
 
 func pvt_apply_speed(delta):
   if self.speed.length_squared() <= CONST.EPSILON*CONST.EPSILON:

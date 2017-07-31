@@ -29,6 +29,7 @@ func interact(character):
 	if (has_power()):
 		character.disable_movement()
 		var anim = character.get_node("Sprite/Animation")
+		print("here I go")
 		anim.play("laughter")
 		yield(anim, "finished")
 		get_tree().quit()
