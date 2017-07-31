@@ -84,6 +84,7 @@ texture = ExtResource( 6 )
 
 [node name="table" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 4109.71, -63.8362 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
@@ -95,6 +96,7 @@ texture = ExtResource( 8 )
 
 [node name="laptop" type="Sprite" parent="table"]
 
+editor/display_folded = true
 transform/pos = Vector2( -1.71777, -53.6857 )
 texture = ExtResource( 9 )
 

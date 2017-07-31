@@ -18,7 +18,6 @@ tile_data = IntArray( -393238, -1073741806, -393237, -1073741808, -393236, -1073
 transform/pos = Vector2( 16, -144 )
 target_room_name = "hall2f"
 spawn_tag = "ControlRoomDoor"
-locked = false
 
 [node name="Start" type="Node2D" parent="."]
 
