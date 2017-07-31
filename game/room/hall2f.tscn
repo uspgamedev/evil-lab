@@ -50,7 +50,7 @@ transform/pos = Vector2( -256, -176 )
 
 [node name="PowerCell" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -799, -160 )
+transform/pos = Vector2( -258.619, -160 )
 power_cell_id = "FirstGate"
 
 [connection signal="exit_room" from="ControlRoomDoor" to="." method="exit_room"]
