@@ -27,4 +27,5 @@ func _fixed_process(delta):
 
 func interact(character):
 	if (has_power()):
+		character.disable_movement()
 		get_tree().quit()
