@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/powered_devices/powered_door.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=4]
+[ext_resource path="res://room/toc2.smp" type="Sample" id=5]
+[ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -42,6 +44,18 @@ func nope():
 		add_child(speech)
 		yield(get_tree(), \"fixed_frame\")
 		speech.go()
+"
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Timer
+
+onready var knock = get_parent().get_node(\"OfficeDoor/SFX\")
+
+func go():
+	knock.go()
+	set_wait_time(2 + randf()*3)
+	start()
 "
 
 [node name="Corridor" instance=ExtResource( 1 )]
@@ -91,6 +105,13 @@ threshold = 0.2
 target_room_name = "office"
 spawn_tag = "CorridorDoor"
 
+[node name="SFX" parent="OfficeDoor" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 0, 160 )
+params/volume_db = 15.0
+params/attenuation/distance_exp = 4.43828
+sample = ExtResource( 5 )
+
 [node name="Hall1FDoor" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1440, -144 )
@@ -109,7 +130,7 @@ locked = true
 
 transform/pos = Vector2( 336, -176 )
 
-[node name="PowerCell" parent="." instance=ExtResource( 4 )]
+[node name="PowerCell" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 960, -160 )
 power_cell_id = "CorridorOfficeDoor"
@@ -123,11 +144,21 @@ script/script = SubResource( 2 )
 
 script/script = SubResource( 3 )
 
+[node name="KnockingTimer" type="Timer" parent="."]
+
+process_mode = 0
+wait_time = 2.0
+one_shot = false
+autostart = true
+script/script = SubResource( 4 )
+
 [connection signal="exit_room" from="EntranceDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="OfficeDoor" to="." method="exit_room"]
+
+[connection signal="opened" from="OfficeDoor" to="KnockingTimer" method="stop"]
 
 [connection signal="opened" from="OfficeDoor" to="Spawn" method="spawn"]
 
@@ -136,5 +167,7 @@ script/script = SubResource( 3 )
 [connection signal="exit_failed" from="BasementDoor" to="LockedEvent" method="nope"]
 
 [connection signal="exit_room" from="BasementDoor" to="." method="exit_room"]
+
+[connection signal="timeout" from="KnockingTimer" to="KnockingTimer" method="go"]
 
 
