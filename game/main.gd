@@ -98,6 +98,7 @@ func end_game(pos, texture):
 	var sprite = Sprite.new()
 	sprite.set_texture(texture)
 	add_child(sprite)
+	sprite.set_modulate(Color(.5, 0, 0))
 	sprite.set_pos(pos)
 	current_room.hide()
 	get_node("HUD").free()
