@@ -5,13 +5,14 @@ const DIR = preload("res://definitions/directions.gd")
 const ACT = preload("res://definitions/actions.gd")
 const CONST = preload("res://definitions/constants.gd")
 
-const ACC = 240
+const DEFAULT_ACC = 32.0 * 10
 const DEACC = 0.75
-const SPEEDLIMIT = ACC * 5
+const SPEEDLIMIT = DEFAULT_ACC * 5
 
 signal speed_changed(speed)
 
 onready var speed = Vector2()
+var ACC = DEFAULT_ACC
 
 func _ready():
   set_fixed_process(true)

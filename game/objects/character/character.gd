@@ -77,7 +77,7 @@ func get_power_bank():
 	return power_bank
 
 func enable_movement():
-	ACC = 240
+	ACC = DEFAULT_ACC
 
 func disable_movement():
 	ACC = 0
