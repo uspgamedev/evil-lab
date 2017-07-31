@@ -95,7 +95,6 @@ func die():
 	var texture = ImageTexture.new()
 	texture.create(capture.get_width(), capture.get_height(), capture.get_format())
 	texture.set_data(capture)
-	stream_player.set_volume(4)
 	stream_player.play()
 	set_fixed_process(false)
 	emit_signal("end_game", pos, texture)
