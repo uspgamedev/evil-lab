@@ -30,6 +30,12 @@ script/source = "extends Node
 
 const SPEECH = preload(\"res://hud/speech/basement_speech.tscn\")
 
+onready var unlock_event = get_node(\"/root/Main/Events/UnlockBasement\")
+onready var door = get_parent().get_node(\"BasementDoor\")
+
+func _ready():
+	unlock_event.door = door
+
 func nope():
 	if get_child_count() == 0:
 		var speech = SPEECH.instance()

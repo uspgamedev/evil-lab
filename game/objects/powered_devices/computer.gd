@@ -21,4 +21,4 @@ func _fixed_process(delta):
 
 func interact(character):
 	if (has_power()):
-		print('hacking')
+		get_node("/root/Main/Events/UnlockBasement").go()
