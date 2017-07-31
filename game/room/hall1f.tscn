@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/powered_devices/elevator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://room/decoration/cardboard_box_3.tex" type="Texture" id=4]
+[ext_resource path="res://room/decoration/cardboard_box_2.tex" type="Texture" id=5]
+[ext_resource path="res://room/decoration/chair_1.tex" type="Texture" id=6]
+[ext_resource path="res://room/decoration/blood3.tex" type="Texture" id=7]
+[ext_resource path="res://room/decoration/blood1.tex" type="Texture" id=8]
+[ext_resource path="res://room/decoration/mug_0.tex" type="Texture" id=9]
 
 [node name="Hall1F" instance=ExtResource( 1 )]
 
@@ -29,6 +35,52 @@ spawn_tag = "Elevator"
 transform/pos = Vector2( 496, -144 )
 target_room_name = "maintenance_room"
 spawn_tag = "Hall1FDoor"
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 220, -35 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 357, -47 )
+texture = ExtResource( 5 )
+
+[node name="Sprite 1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 665, -80 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+flip_h = true
+
+[node name="Sprite 4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 691, -130 )
+transform/scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 7 )
+modulate = Color( 0.613281, 0.613281, 0.613281, 1 )
+
+[node name="Sprite 5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 604, -194 )
+texture = ExtResource( 8 )
+
+[node name="Sprite 6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 293.5, -13.5 )
+transform/rot = 270.0
+transform/scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite 7" type="Sprite" parent="."]
+
+transform/pos = Vector2( 296.5, -9.5 )
+transform/rot = -69.0
+transform/scale = Vector2( 0.265, 0.265 )
+texture = ExtResource( 7 )
+flip_h = true
+flip_v = true
 
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
