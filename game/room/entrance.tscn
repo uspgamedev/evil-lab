@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/trigger_area.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/collisionfix.gd" type="Script" id=4]
+[ext_resource path="res://room/decoration/blood1.tex" type="Texture" id=5]
+[ext_resource path="res://room/decoration/corpse.tex" type="Texture" id=6]
+[ext_resource path="res://room/decoration/blood2.tex" type="Texture" id=7]
+[ext_resource path="res://room/decoration/blood3.tex" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -58,6 +62,49 @@ script/script = SubResource( 2 )
 [node name="Start" type="Node2D" parent="."]
 
 transform/pos = Vector2( 912, -144 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 960, -36 )
+texture = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 880, -40 )
+texture = ExtResource( 6 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 880, 14 )
+texture = ExtResource( 7 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+
+transform/pos = Vector2( 787, 8 )
+transform/scale = Vector2( 1, 0.6 )
+texture = ExtResource( 7 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 760, -116 )
+texture = ExtResource( 5 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 920, -166 )
+texture = ExtResource( 8 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 920, -166 )
+texture = ExtResource( 8 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 820, -86 )
+transform/rot = 180.0
+transform/scale = Vector2( 0.6, 1 )
+texture = ExtResource( 8 )
 
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
