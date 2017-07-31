@@ -16,6 +16,8 @@ onready var light = get_node("Lamp/Light2D")
 onready var power_tween = get_node("PowerTween")
 onready var light_tween = get_node("LightTween")
 
+signal end_game(pos, texture)
+
 func _ready():
 	var floor_level = get_pos()
 	floor_level.y = 0
@@ -81,3 +83,16 @@ func enable_movement():
 
 func disable_movement():
 	ACC = 0
+
+func die():
+	var camera = get_node("Camera2D")
+	var pos = camera.get_camera_pos()
+	get_viewport().queue_screen_capture()
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	var capture = get_viewport().get_screen_capture()
+	var texture = ImageTexture.new()
+	texture.create(capture.get_width(), capture.get_height(), capture.get_format())
+	texture.set_data(capture)
+	set_fixed_process(false)
+	emit_signal("end_game", pos, texture)

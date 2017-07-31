@@ -118,7 +118,7 @@ autoplay = "idle"
 transform/pos = Vector2( 64, -160 )
 texture = ExtResource( 2 )
 hframes = 12
-frame = 10
+frame = 5
 
 [connection signal="landed" from="." to="." method="_within_reach"]
 
