@@ -1,6 +1,7 @@
 extends Node2D
 
 const CHARACTER = preload("res://objects/character/character.tscn")
+const FADER = preload("res://effects/fader.tscn")
 const MAX_LAB_POWER = 300
 const MIN_LAB_POWER = 0
 const LAB_POWER_DEPLETION_RATE = .3
@@ -18,6 +19,7 @@ var power_cell_list = []
 var power_cell_name_list = []
 
 func _ready():
+	character.connect("end_game", self, "end_game")
 	tween = Tween.new()
 	self.add_child(tween)
 	var room = get_node("Room")
@@ -89,3 +91,17 @@ func change_value2(charger, object, property, current_value, new_value, time):
 	tween.start()
 	yield(tween, 'tween_complete')
 	charger.can_charge = true
+
+func end_game(pos, texture):
+	var fader = FADER.instance()
+	fader.fade_out_time = 4
+	var sprite = Sprite.new()
+	sprite.set_texture(texture)
+	add_child(sprite)
+	sprite.set_pos(pos)
+	current_room.hide()
+	get_node("HUD").free()
+	self.add_child(fader)
+	fader.fade_out()
+	yield(fader, "faded_out")
+	get_tree().quit()

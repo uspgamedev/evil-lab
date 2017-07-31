@@ -25,7 +25,7 @@ func _fixed_process(delta):
 func _process(delta):
 	flicker_time += delta
 	flicker = 10*intensity*sin(intensity*4*2*PI*flicker_time)
-	if flicker + randf()*3*intensity > 3:
+	if flicker + randf()*3*intensity > 2:
 		sprite.show()
 	else:
 		sprite.hide()
@@ -35,4 +35,4 @@ func _process(delta):
 
 func check_character(body):
 	if body == character:
-		get_tree().quit()
+		character.die()

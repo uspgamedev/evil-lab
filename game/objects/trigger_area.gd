@@ -14,6 +14,6 @@ func _ready():
 
 func _check_character(body):
 	if body extends CHARACTER:
-		emit_signal("triggered")
+		emit_signal("triggered", body)
 		if oneshot:
 			disconnect("body_enter", self, "_check_character")

@@ -257,7 +257,7 @@ step = 0.1
 [sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -60, -220, 60, -220, 60, -16, -60, -16 )
+points = Vector2Array( -80, -220, 80, -220, 80, -16, -80, -16 )
 
 [node name="Character" instance=ExtResource( 1 )]
 
