@@ -42,10 +42,15 @@ power_cell_id = "Computer"
 transform/pos = Vector2( -880, -144 )
 power_cell_id = "FirstGate"
 
+[node name="Gate1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -1360, -144 )
+power_cell_id = "SecondGate"
+
 [node name="PowerCell 2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 240, -176 )
-power_cell_id = "FirstGate"
+power_cell_id = "SecondGate"
 
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 

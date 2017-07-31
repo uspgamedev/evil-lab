@@ -43,6 +43,10 @@ initial_power = 5
 
 [node name="FirstGate" parent="PowerCells" instance=ExtResource( 4 )]
 
+initial_power = 35
+
+[node name="SecondGate" parent="PowerCells" instance=ExtResource( 4 )]
+
 initial_power = 45
 
 
