@@ -2,9 +2,9 @@
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
-[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=3]
-[ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=4]
-[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=5]
+[ext_resource path="res://objects/character/cientista_walk.tex" type="Texture" id=3]
+[ext_resource path="res://objects/character/cientista.tex" type="Texture" id=4]
+[ext_resource path="res://objects/character/morte.ogg" type="AudioStream" id=5]
 [ext_resource path="res://objects/character/lamp.tex" type="Texture" id=6]
 [ext_resource path="res://objects/character/light.tex" type="Texture" id=7]
 [ext_resource path="res://input/keyboard_directional.tscn" type="PackedScene" id=8]
@@ -57,7 +57,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
@@ -104,7 +104,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:frame")
@@ -171,7 +171,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
@@ -218,7 +218,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../Lamp:transform/pos")
@@ -265,22 +265,11 @@ points = Vector2Array( -80, -220, 80, -220, 80, -16, -80, -16 )
 collision/layers = 2
 script/script = ExtResource( 2 )
 
-[node name="DeathStreamPlayer" type="StreamPlayer" parent="."]
-
-stream/stream = ExtResource( 3 )
-stream/play = false
-stream/loop = false
-stream/volume_db = 0.0
-stream/autoplay = false
-stream/paused = false
-stream/loop_restart_time = 0.0
-stream/buffering_ms = 500
-
 [node name="Sprite" parent="."]
 
 transform/pos = Vector2( 40, 0 )
 transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 offset = Vector2( 0, -60 )
 hframes = 4
 
@@ -298,6 +287,17 @@ anims/up_moving = SubResource( 8 )
 [node name="Collision" parent="."]
 
 shape = SubResource( 9 )
+
+[node name="DeathStreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 5 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 24.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [node name="Lamp" type="Sprite" parent="."]
 
