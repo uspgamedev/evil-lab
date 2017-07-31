@@ -468,6 +468,7 @@ texture = ExtResource( 25 )
 
 editor/display_folded = true
 visibility/visible = false
+z/z = -15
 
 [node name="mesh" type="Sprite" parent="paralax"]
 
