@@ -3,6 +3,9 @@ extends "res://objects/body.gd"
 const CHASE_DIST = 360
 const SPEED_FACTOR = 2*10
 
+onready var sfx = get_node("SamplePlayer2D")
+onready var timer = get_node("Timer")
+
 var character = null
 var sacrifice = false
 var direction = 1
@@ -23,3 +26,13 @@ func _fixed_process(delta):
 
 func start_sacrifice(target):
 	pass
+
+func cry():
+	sfx.go()
+	timer.set_wait_time(5*randf())
+	timer.start()
+
+
+func check_character( body ):
+	if body == character:
+		get_tree().quit()
