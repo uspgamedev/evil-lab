@@ -18,7 +18,8 @@ func go():
 [node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
-first_room = "corridor"
+GAMEOVER_PATH = null
+first_room = "basement_corridor"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 

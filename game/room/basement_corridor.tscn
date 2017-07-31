@@ -41,16 +41,18 @@ tile_data = IntArray( -2031648, 1, -2031647, 1, -2031646, 1, -2031645, 1, -20316
 transform/pos = Vector2( -808, -144 )
 target_room_name = "corridor"
 spawn_tag = "BasementDoor"
+locked = false
 
 [node name="AltarDoor" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 8567.96, -144 )
 target_room_name = "altar"
 spawn_tag = "BasementDoor"
+locked = false
 
 [node name="Start" type="Node2D" parent="."]
 
-transform/pos = Vector2( 8160, -160 )
+transform/pos = Vector2( -813.163, -148.534 )
 
 [node name="bloodspatter_0" type="Sprite" parent="."]
 
@@ -363,7 +365,6 @@ __meta__ = {
 
 [node name="boxpile" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( -134.93, -104.24 )
 texture = ExtResource( 19 )
 

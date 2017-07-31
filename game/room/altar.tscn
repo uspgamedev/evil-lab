@@ -21,6 +21,7 @@ tile_data = IntArray( -983024, 536870938, -917490, 536870938, -917489, 536870938
 transform/pos = Vector2( 0, -144 )
 target_room_name = "basement_corridor"
 spawn_tag = "AltarDoor"
+locked = false
 
 [node name="Sprite 4" type="Sprite" parent="."]
 
@@ -33,6 +34,7 @@ texture = ExtResource( 3 )
 
 transform/pos = Vector2( 205.029, 249.661 )
 texture = ExtResource( 4 )
+modulate = Color( 1, 0.365051, 0.195312, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
