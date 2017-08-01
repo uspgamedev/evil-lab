@@ -21,6 +21,7 @@ func _fixed_process(delta):
 		sprite.get_node("AnimationPlayer").stop()
 		sprite.set_texture(off)
 		sprite.set_hframes(1)
+		sprite.set_frame(0)
 
 func interact(character):
 	if (has_power()):
