@@ -72,21 +72,21 @@ __meta__ = {
 
 [node name="Text" parent="Speech" instance=ExtResource( 8 )]
 
-text = "I can plug my power bank here."
+text = "I can charge my power bank here."
 
 [node name="Text1" parent="Speech" instance=ExtResource( 8 )]
 
-text = "At least as long as the lab doesn't run out."
+text = "Hopefully the lab reserves won't run out."
 
 [node name="Speech1" parent="." instance=ExtResource( 7 )]
 
 [node name="Text" parent="Speech1" instance=ExtResource( 8 )]
 
-text = "A power cell."
+text = "This power cell keeps the cafeteria door shut."
 
 [node name="Text1" parent="Speech1" instance=ExtResource( 8 )]
 
-text = "Gotta transfer the energy."
+text = "If I drain it, the door should open."
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
 
