@@ -36,7 +36,7 @@ locked = false
 
 transform/pos = Vector2( 0, -183 )
 power_cell_id = "Elevator"
-threshold = 0.7
+threshold = 0.6
 target_room_name = "hall2f"
 spawn_tag = "Elevator"
 
