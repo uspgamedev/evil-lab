@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/charger.tscn" type="PackedScene" id=3]
 [ext_resource path="res://room/decoration/security_table_0.tex" type="Texture" id=4]
+[ext_resource path="res://room/spawn_range.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -57,6 +58,12 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
+
+[node name="SpawnRange" type="Node" parent="."]
+
+script/script = ExtResource( 5 )
+minimum = -160
+maximum = 500
 
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 

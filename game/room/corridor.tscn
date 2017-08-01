@@ -8,7 +8,6 @@
 [ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=6]
 [ext_resource path="res://room/toc2.smp" type="Sample" id=7]
 [ext_resource path="res://objects/power_cell.tscn" type="PackedScene" id=8]
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -249,6 +248,12 @@ wait_time = 2.0
 one_shot = false
 autostart = true
 script/script = SubResource( 4 )
+
+[node name="SpawnRange" type="Node" parent="."]
+
+script/script = ExtResource( 7 )
+minimum = -940
+maximum = 2380
 
 [connection signal="exit_room" from="EntranceDoor" to="." method="exit_room"]
 

@@ -21,6 +21,7 @@ var power_cell_name_list = []
 
 func _ready():
 	character.connect("end_game", self, "end_game")
+	character.connect("character_ready", self, "character_ready")
 	tween = Tween.new()
 	self.add_child(tween)
 	var room = get_node("Room")
@@ -29,6 +30,9 @@ func _ready():
 	for power_cell in power_cells.get_children():
 		power_cell.player = self.character
 	set_fixed_process(true)
+
+func character_ready(character):
+	get_node('MonsterManagement').character = character
 
 func get_power_cell(id):
 	return power_cells.get_node(id)
@@ -108,4 +112,3 @@ func end_game(pos, texture):
 	get_node("StreamPlayer").set_volume(0)
 	yield(fader, "faded_out")
 	get_tree().change_scene(GAMEOVER_PATH)
-

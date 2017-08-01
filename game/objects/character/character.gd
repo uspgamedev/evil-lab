@@ -19,6 +19,7 @@ onready var light_tween = get_node("LightTween")
 onready var step_timer = get_node("step_timer")
 
 signal end_game(pos, texture)
+signal character_ready(character)
 
 func _ready():
 	var floor_level = get_pos()
@@ -26,6 +27,7 @@ func _ready():
 	set_pos(floor_level)
 	set_fixed_process(true)
 	get_tree().get_root().get_node("Main/HUD/ProgressBar").change_value(power_bank, 1)
+	emit_signal("character_ready", self)
 
 func _fixed_process(delta):
 	battery_depletion(delta)

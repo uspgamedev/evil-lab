@@ -384,7 +384,6 @@ texture = ExtResource( 4 )
 [node name="Crawler" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( -1136, 0 )
-
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
 

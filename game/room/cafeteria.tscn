@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://room/decoration/cardboard_box_3.tex" type="Texture" id=10]
 [ext_resource path="res://room/decoration/table_2.tex" type="Texture" id=11]
 [ext_resource path="res://room/decoration/mug_0.tex" type="Texture" id=12]
+[ext_resource path="res://room/spawn_range.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,6 +34,7 @@ transform/pos = Vector2( -320, -16 )
 transform/pos = Vector2( -320, -144 )
 target_room_name = "storage_room"
 spawn_tag = "CafeteriaDoor"
+locked = false
 
 [node name="CorridorDoor" parent="." instance=ExtResource( 3 )]
 
@@ -47,6 +49,7 @@ spawn_tag = "CafeteriaDoor"
 transform/pos = Vector2( 1280, -144 )
 target_room_name = "power_room"
 spawn_tag = "CafeteriaDoor"
+locked = false
 
 [node name="Speech" parent="." instance=ExtResource( 4 )]
 
@@ -101,6 +104,12 @@ texture = ExtResource( 11 )
 
 transform/pos = Vector2( 912, -73 )
 texture = ExtResource( 12 )
+
+[node name="SpawnRange" type="Node" parent="."]
+
+script/script = ExtResource( 13 )
+minimum = -710
+maximum = 1360
 
 [connection signal="exit_room" from="StorageDoor" to="." method="exit_room"]
 
