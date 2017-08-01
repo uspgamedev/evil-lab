@@ -5,7 +5,7 @@ const DIR = preload("res://definitions/directions.gd")
 const ACT = preload("res://definitions/actions.gd")
 const CONST = preload("res://definitions/constants.gd")
 
-const DEFAULT_ACC = 32.0 * 10
+const DEFAULT_ACC = 32.0
 const DEACC = 0.75
 const SPEEDLIMIT = DEFAULT_ACC * 5
 
