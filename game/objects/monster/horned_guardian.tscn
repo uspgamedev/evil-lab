@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://objects/monster/horned_guardian.gd" type="Script" id=1]
 [ext_resource path="res://objects/monster/monstrinho_ataque2.tex" type="Texture" id=2]
@@ -99,6 +99,9 @@ tracks/3/keys = {
 "values": [ Vector2( 0, -160 ) ]
 }
 
+[sub_resource type="SampleLibrary" id=3]
+
+
 [node name="HornedGuardian" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -124,6 +127,7 @@ hframes = 12
 
 [node name="SFX" parent="." instance=ExtResource( 4 )]
 
+config/samples = SubResource( 3 )
 sample = ExtResource( 5 )
 
 [connection signal="landed" from="." to="." method="_within_reach"]

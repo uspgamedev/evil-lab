@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=1]
+[gd_scene load_steps=43 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -33,6 +33,9 @@
 [ext_resource path="res://objects/monster/monster_trigger_spawn.gd" type="Script" id=31]
 [ext_resource path="res://objects/collisionfix.gd" type="Script" id=32]
 [ext_resource path="res://room/end.ogg" type="AudioStream" id=33]
+[ext_resource path="res://objects/trigger_area.tscn" type="PackedScene" id=34]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=35]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=36]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -58,6 +61,11 @@ extents = Vector2( 100, 100 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 100, 100 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 50 )
 
 [node name="BasementCorridor" instance=ExtResource( 1 )]
 
@@ -689,9 +697,30 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
+[node name="TriggerArea" parent="." instance=ExtResource( 34 )]
+
+transform/pos = Vector2( 4366.87, -145.773 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Speech" parent="." instance=ExtResource( 35 )]
+
+[node name="Text" parent="Speech" instance=ExtResource( 36 )]
+
+text = "Almost there."
+
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="AltarDoor" to="." method="exit_room"]
+
+[connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
 
 
 [editable path="Spawn 1"]
