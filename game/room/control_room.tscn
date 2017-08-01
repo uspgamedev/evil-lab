@@ -488,6 +488,20 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="TriggerArea2" parent="." instance=ExtResource( 23 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 384, -176 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea2"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Speech" parent="." instance=ExtResource( 24 )]
 
 editor/display_folded = true
@@ -512,6 +526,16 @@ text = "Disgusting."
 
 text = "But now I can put an end to all this."
 
+[node name="Speech2" parent="." instance=ExtResource( 24 )]
+
+[node name="Text" parent="Speech2" instance=ExtResource( 25 )]
+
+text = "I can use this computer to unlock the basement."
+
+[node name="Text1" parent="Speech2" instance=ExtResource( 25 )]
+
+text = "Just need to power it."
+
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
 [connection signal="opened" from="Gate1" to="Crawler" method="start_sacrifice"]
@@ -519,5 +543,7 @@ text = "But now I can put an end to all this."
 [connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
 
 [connection signal="triggered" from="TriggerArea1" to="Speech1" method="go"]
+
+[connection signal="triggered" from="TriggerArea2" to="Speech2" method="go"]
 
 
