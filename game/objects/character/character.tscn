@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://objects/directed_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/character/character.gd" type="Script" id=2]
@@ -26,7 +26,7 @@ length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 
 resource/name = "laughter"
 length = 4.0
@@ -83,9 +83,8 @@ tracks/4/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource/name = "left_idle"
 length = 1.6
 loop = true
 step = 0.4
@@ -139,20 +138,9 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( -40, 0 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:hframes")
-tracks/5/interp = 1
-tracks/5/imported = false
-tracks/5/keys = {
-"times": FloatArray( 1.6 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource/name = "left_moving"
 length = 1.2
 loop = true
 step = 0.3
@@ -206,20 +194,9 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( -40, 0 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:hframes")
-tracks/5/interp = 1
-tracks/5/imported = false
-tracks/5/keys = {
-"times": FloatArray( 1.2 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource/name = "right_idle"
 length = 1.6
 loop = true
 step = 0.4
@@ -263,20 +240,9 @@ tracks/3/keys = {
 "update": 1,
 "values": [ Vector2( 84, -142 ), Vector2( 84, -140 ), Vector2( 84, -138 ), Vector2( 84, -140 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:hframes")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
-resource/name = "right_moving"
 length = 1.2
 loop = true
 step = 0.3
@@ -330,35 +296,26 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 40, 0 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:hframes")
-tracks/5/interp = 1
-tracks/5/imported = false
-tracks/5/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-
-[sub_resource type="Animation" id=7]
-
-resource/name = "up_idle"
-length = 1.0
-loop = false
-step = 0.1
 
 [sub_resource type="Animation" id=8]
 
-resource/name = "up_moving"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="Animation" id=9]
+
+length = 1.0
+loop = false
+step = 0.1
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -80, -220, 80, -220, 80, -16, -80, -16 )
+
+[sub_resource type="SampleLibrary" id=11]
+
 
 [node name="Character" instance=ExtResource( 1 )]
 
@@ -379,20 +336,21 @@ frame = 1
 
 anims/down_idle = SubResource( 1 )
 anims/down_moving = SubResource( 2 )
-anims/laughter = SubResource( 10 )
-anims/left_idle = SubResource( 3 )
-anims/left_moving = SubResource( 4 )
-anims/right_idle = SubResource( 5 )
-anims/right_moving = SubResource( 6 )
-anims/up_idle = SubResource( 7 )
-anims/up_moving = SubResource( 8 )
+anims/laughter = SubResource( 3 )
+anims/left_idle = SubResource( 4 )
+anims/left_moving = SubResource( 5 )
+anims/right_idle = SubResource( 6 )
+anims/right_moving = SubResource( 7 )
+anims/up_idle = SubResource( 8 )
+anims/up_moving = SubResource( 9 )
 
 [node name="Collision" parent="."]
 
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="SFX" parent="." instance=ExtResource( 6 )]
 
+config/samples = SubResource( 11 )
 sample = ExtResource( 7 )
 
 [node name="DeathStreamPlayer" type="StreamPlayer" parent="."]
