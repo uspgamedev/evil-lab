@@ -25,6 +25,7 @@ locked = false
 
 [node name="Sprite 4" type="Sprite" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 907.297, -738.819 )
 transform/rot = 9.71287

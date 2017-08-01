@@ -32,4 +32,4 @@ func interact(character):
 		character.get_node("KeyboardDirectional").disconnect("pressing_dir", character, "push_dir")
 		anim.play("laughter")
 		yield(anim, "finished")
-		get_tree().quit()
+		get_tree().change_scene("res://splash/credits.tscn")

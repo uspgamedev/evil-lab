@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=1]
+[gd_scene load_steps=39 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -32,6 +32,12 @@
 [ext_resource path="res://objects/monster/monster_trigger_spawn.tscn" type="PackedScene" id=30]
 [ext_resource path="res://objects/monster/monster_trigger_spawn.gd" type="Script" id=31]
 [ext_resource path="res://objects/collisionfix.gd" type="Script" id=32]
+[ext_resource path="res://room/end.ogg" type="AudioStream" id=33]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -49,11 +55,6 @@ custom_solver_bias = 0.0
 extents = Vector2( 100, 100 )
 
 [sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
-extents = Vector2( 100, 100 )
-
-[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 100, 100 )
@@ -571,7 +572,7 @@ texture = ExtResource( 29 )
 
 transform/pos = Vector2( 1470.11, 41.5781 )
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -584,7 +585,7 @@ monster_type = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 2"]
 
 transform/pos = Vector2( 132.094, -135.33 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 32 )
@@ -593,7 +594,7 @@ script/script = ExtResource( 32 )
 
 transform/pos = Vector2( 2300.11, 41.5781 )
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -606,7 +607,7 @@ monster_type = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 3"]
 
 transform/pos = Vector2( 132.094, -135.33 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 32 )
@@ -615,7 +616,7 @@ script/script = ExtResource( 32 )
 
 transform/pos = Vector2( 2445.72, 2.17261 )
 input/pickable = true
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -628,7 +629,7 @@ monster_type = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 4"]
 
 transform/pos = Vector2( 132.094, -135.33 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 32 )
@@ -637,7 +638,7 @@ script/script = ExtResource( 32 )
 
 transform/pos = Vector2( 3425.72, 2.17261 )
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -650,7 +651,7 @@ monster_type = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 5"]
 
 transform/pos = Vector2( 132.094, -135.33 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 32 )
@@ -659,7 +660,7 @@ script/script = ExtResource( 32 )
 
 transform/pos = Vector2( 4700.11, 41.5781 )
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -672,10 +673,21 @@ monster_type = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 6"]
 
 transform/pos = Vector2( 132.094, -135.33 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 32 )
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 33 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 10.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
