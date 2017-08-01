@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://room/decoration/cardboard_box_1.tex" type="Texture" id=6]
 [ext_resource path="res://room/decoration/cardboard_box_3.tex" type="Texture" id=7]
 [ext_resource path="res://room/decoration/cardboard_box_2.tex" type="Texture" id=8]
+[ext_resource path="res://hud/SpecialElite.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 24
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 9 )
 
 [node name="StorageRoom" instance=ExtResource( 1 )]
 
@@ -78,6 +86,33 @@ texture = ExtResource( 7 )
 
 transform/pos = Vector2( 224, -48 )
 texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="."]
+
+visibility/light_mask = 0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 755.0
+margin/top = -342.0
+margin/right = 983.0
+margin/bottom = -212.0
+custom_fonts/font = SubResource( 1 )
+text = "ARRROWS / WASD
+Movement
+
+Z / E
+Interact
+
+C / Space
+Recharge Lamp
+
+X / F
+Turn On-Off"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
 
