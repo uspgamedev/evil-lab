@@ -7,6 +7,8 @@ onready var top_tween = get_node('TopTween')
 onready var anim = get_node('AnimationPlayer')
 var is_open = false
 
+signal opened
+
 func interact(character):
 	pass
 
@@ -17,6 +19,7 @@ func _fixed_process(delta):
 	if (!has_power() and !is_open):
 		is_open = true
 		anim.play('open')
+		emit_signal("opened")
 		#change_value(bot_tween, bot, "transform/pos", bot.get_pos(), bot.get_pos() + Vector2(0, 120), 2)
 		#change_value(top_tween, top, "transform/pos", top.get_pos(), top.get_pos() - Vector2(0, 120), 2)
 	elif (has_power() and is_open):

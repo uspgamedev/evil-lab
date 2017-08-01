@@ -9,6 +9,7 @@ onready var timer = get_node("Timer")
 var character = null
 var sacrifice = false
 var direction = 1
+var target
 
 func _ready():
 	set_fixed_process(true)
@@ -23,9 +24,13 @@ func _fixed_process(delta):
 			if randf() > 0.97:
 				direction *= -1
 			push(direction*Vector2(1,0)/SPEED_FACTOR)
+	elif sacrifice:
+		var pos = target.get_pos()
+		push((pos - get_pos()).normalized()/SPEED_FACTOR)
 
-func start_sacrifice(target):
-	pass
+func start_sacrifice():
+	sacrifice = true
+	target = get_node("../Target")
 
 func cry():
 	sfx.go()

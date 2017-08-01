@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://objects/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/monster/crawler.gd" type="Script" id=2]
@@ -121,7 +121,10 @@ tracks/1/keys = {
 custom_solver_bias = 0.0
 points = Vector2Array( -80, -100, 80, -100, 80, 0, -80, 0 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="SampleLibrary" id=6]
+
+
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 50 )
@@ -159,6 +162,7 @@ shape = SubResource( 5 )
 
 [node name="SamplePlayer2D" parent="." instance=ExtResource( 5 )]
 
+config/samples = SubResource( 6 )
 config/pitch_random = -0.1
 sample = ExtResource( 6 )
 
@@ -172,7 +176,7 @@ autostart = true
 [node name="Death" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -182,7 +186,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 7 )
