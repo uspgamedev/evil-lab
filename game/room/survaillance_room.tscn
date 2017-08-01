@@ -33,10 +33,11 @@ tile_data = IntArray( -327684, -1073741806, -327683, -1073741808, -327682, -1073
 transform/pos = Vector2( 432, -144 )
 target_room_name = "hall2f"
 spawn_tag = "SurvaillanceDoor"
+locked = false
 
 [node name="Charger" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 176, -160 )
+transform/pos = Vector2( 150.73, -160 )
 
 [node name="Survaillance" type="Sprite" parent="."]
 
