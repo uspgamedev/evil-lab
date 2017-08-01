@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=1]
+[gd_scene load_steps=38 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -29,6 +29,34 @@
 [ext_resource path="res://room/decoration/steel_beam_fallen_0.tex" type="Texture" id=27]
 [ext_resource path="res://room/decoration/steel_beam_fallen_1.tex" type="Texture" id=28]
 [ext_resource path="res://room/decoration/cardboard_box_3.tex" type="Texture" id=29]
+[ext_resource path="res://objects/monster/monster_trigger_spawn.tscn" type="PackedScene" id=30]
+[ext_resource path="res://objects/monster/monster_trigger_spawn.gd" type="Script" id=31]
+[ext_resource path="res://objects/collisionfix.gd" type="Script" id=32]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 100 )
 
 [node name="BasementCorridor" instance=ExtResource( 1 )]
 
@@ -365,6 +393,7 @@ __meta__ = {
 
 [node name="boxpile" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -134.93, -104.24 )
 texture = ExtResource( 19 )
 
@@ -385,6 +414,7 @@ texture = ExtResource( 21 )
 
 [node name="bloodspatter_2" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 5048.4, -158.282 )
 transform/scale = Vector2( 4.50613, 4.50613 )
 texture = ExtResource( 3 )
@@ -416,6 +446,7 @@ texture = ExtResource( 6 )
 
 [node name="pentagram 2" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 6109.87, -183.156 )
 transform/rot = 1.03737
 transform/scale = Vector2( 2.67381, 2.67381 )
@@ -506,6 +537,7 @@ texture = ExtResource( 28 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 7317.74, -143.677 )
 
 [node name="Sprite 3" type="Sprite" parent="Node2D"]
@@ -533,8 +565,121 @@ texture = ExtResource( 20 )
 transform/pos = Vector2( -31.0889, 152.573 )
 texture = ExtResource( 29 )
 
+[node name="Spawn 1" parent="." instance=ExtResource( 30 )]
+
+[node name="Spawn 2" type="Area2D" parent="."]
+
+transform/pos = Vector2( 1470.11, 41.5781 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 31 )
+monster_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 2"]
+
+transform/pos = Vector2( 132.094, -135.33 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+script/script = ExtResource( 32 )
+
+[node name="Spawn 3" type="Area2D" parent="."]
+
+transform/pos = Vector2( 2300.11, 41.5781 )
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 31 )
+monster_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 3"]
+
+transform/pos = Vector2( 132.094, -135.33 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+script/script = ExtResource( 32 )
+
+[node name="Spawn 4" type="Area2D" parent="."]
+
+transform/pos = Vector2( 2445.72, 2.17261 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 31 )
+monster_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 4"]
+
+transform/pos = Vector2( 132.094, -135.33 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+script/script = ExtResource( 32 )
+
+[node name="Spawn 5" type="Area2D" parent="."]
+
+transform/pos = Vector2( 3425.72, 2.17261 )
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 31 )
+monster_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 5"]
+
+transform/pos = Vector2( 132.094, -135.33 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+script/script = ExtResource( 32 )
+
+[node name="Spawn 6" type="Area2D" parent="."]
+
+transform/pos = Vector2( 4700.11, 41.5781 )
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 132.094, -135.33 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 31 )
+monster_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawn 6"]
+
+transform/pos = Vector2( 132.094, -135.33 )
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+script/script = ExtResource( 32 )
+
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
 [connection signal="exit_room" from="AltarDoor" to="." method="exit_room"]
 
 
+[editable path="Spawn 1"]
