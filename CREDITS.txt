@@ -1,0 +1,41 @@
+# Developed by USPGameDev
+
+## Game Design
+
+José Alvim
+Lívia Maki Yoshikawa
+Lucas Dário
+Victor Domiciano Mendonça
+Willian Akira Mizutani
+Wilson Kazuo Mizutani
+
+## Programming
+
+Ricardo Lira da Fonseca
+Victor Domiciano Mendonça
+Wilson Kazuo Mizutani
+
+## Visual Art
+
+José Alvim
+Lívia Maki Yoshikawa
+
+## Music and Sound
+
+José Alvim
+Lívia Maki Yoshikawa
+
+# Assets and other resources
+
+## Game Engine
+
+Developed with Godot 2.1.3, licensed under the MIT License
+
+## Fonts
+
+Under Open Font License:
++ Digital7
+
+Under Apache License 2.0:
++ SpecialElite, by Astigmatic
+
