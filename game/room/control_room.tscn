@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=28 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -22,11 +22,19 @@
 [ext_resource path="res://room/decoration/blood1.tex" type="Texture" id=20]
 [ext_resource path="res://objects/monster/crawler.tscn" type="PackedScene" id=21]
 [ext_resource path="res://room/spawn_range.gd" type="Script" id=22]
+[ext_resource path="res://objects/trigger_area.tscn" type="PackedScene" id=23]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=24]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 50 )
 
 [node name="ControlRoom" instance=ExtResource( 1 )]
 
@@ -447,8 +455,33 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
+[node name="TriggerArea" parent="." instance=ExtResource( 23 )]
+
+transform/pos = Vector2( -720, -160 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Speech" parent="." instance=ExtResource( 24 )]
+
+[node name="Text" parent="Speech" instance=ExtResource( 25 )]
+
+text = "It seems dangerous, but I need to access that power cell."
+
+[node name="Text1" parent="Speech" instance=ExtResource( 25 )]
+
+text = "It powers the computer."
+
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
 [connection signal="opened" from="Gate1" to="Crawler" method="start_sacrifice"]
+
+[connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
 
 
