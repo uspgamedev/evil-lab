@@ -25,7 +25,7 @@ func go():
 
 script/script = ExtResource( 1 )
 GAMEOVER_PATH = "res://splash/gameover.tscn"
-first_room = "basement_corridor"
+first_room = "corridor"
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 

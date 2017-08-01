@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://objects/charger.tscn" type="PackedScene" id=4]
 [ext_resource path="res://room/spawn_range.gd" type="Script" id=5]
 [ext_resource path="res://objects/trigger_area.tscn" type="PackedScene" id=6]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 50 )
 
 [node name="PowerRoom" instance=ExtResource( 1 )]
 
@@ -37,6 +44,54 @@ maximum = 630
 
 [node name="TriggerArea" parent="." instance=ExtResource( 6 )]
 
+transform/pos = Vector2( -212.218, -151.001 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TriggerArea1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 459.806, -174.128 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea1"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Speech" parent="." instance=ExtResource( 7 )]
+
+[node name="Text" parent="Speech" instance=ExtResource( 8 )]
+
+text = "I can plug my power bank here."
+
+[node name="Text1" parent="Speech" instance=ExtResource( 8 )]
+
+text = "At least as long as the lab doesn't run out."
+
+[node name="Speech1" parent="." instance=ExtResource( 7 )]
+
+[node name="Text" parent="Speech1" instance=ExtResource( 8 )]
+
+text = "A power cell."
+
+[node name="Text1" parent="Speech1" instance=ExtResource( 8 )]
+
+text = "Gotta transfer the energy."
+
 [connection signal="exit_room" from="CafeteriaDoor" to="." method="exit_room"]
+
+[connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
+
+[connection signal="triggered" from="TriggerArea1" to="Speech1" method="go"]
 
 
