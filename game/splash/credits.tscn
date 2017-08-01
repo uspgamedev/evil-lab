@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://splash/credits.gd" type="Script" id=1]
+[ext_resource path="res://hud/SpecialElite.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 48
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 48
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 2 )
+
+[node name="credits" type="Node2D"]
+
+script/script = ExtResource( 1 )
+RESTART_SCENE_PATH = "res://splash/splash.tscn"
+
+[node name="Programming" type="Label" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 64.0
+margin/top = 256.0
+margin/right = 640.0
+margin/bottom = 384.0
+custom_fonts/font = SubResource( 1 )
+text = "Programming"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Programmers" type="Label" parent="Programming"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 576.0
+margin/top = 64.0
+margin/right = 1152.0
+margin/bottom = 320.0
+custom_fonts/font = SubResource( 2 )
+text = "Victor Dominiciano
+Lucas Dario
+Willian Akira Mizutani
+Wilson Kazuo Mizutani"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Arts & Shit 2" type="Label" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 256.0
+margin/right = 640.0
+margin/bottom = 387.0
+custom_fonts/font = SubResource( 1 )
+text = "Art, Soundtrack
+& Sound Effects"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Artists & Such" type="Label" parent="Arts & Shit 2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 640.0
+margin/top = 128.0
+margin/right = 1280.0
+margin/bottom = 256.0
+custom_fonts/font = SubResource( 2 )
+text = "Livia Maki Yoshikawa
+Jose Goudet Alvim"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="The End" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 320.0
+margin/top = 448.0
+margin/right = 960.0
+margin/bottom = 576.0
+custom_fonts/font = SubResource( 3 )
+text = "The End"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="timer" type="Timer" parent="tween"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+
