@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -10,6 +10,14 @@
 [ext_resource path="res://room/decoration/blood1.tex" type="Texture" id=8]
 [ext_resource path="res://room/decoration/mug_0.tex" type="Texture" id=9]
 [ext_resource path="res://room/spawn_range.gd" type="Script" id=10]
+[ext_resource path="res://objects/trigger_area.tscn" type="PackedScene" id=11]
+[ext_resource path="res://hud/speech.tscn" type="PackedScene" id=12]
+[ext_resource path="res://hud/speech/text.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 200, 50 )
 
 [node name="Hall1F" instance=ExtResource( 1 )]
 
@@ -91,10 +99,33 @@ script/script = ExtResource( 10 )
 minimum = -620
 maximum = 620
 
+[node name="TriggerArea" parent="." instance=ExtResource( 11 )]
+
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+
+transform/pos = Vector2( -5.01056, -167.018 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Speech" parent="." instance=ExtResource( 12 )]
+
+[node name="Text" parent="Speech" instance=ExtResource( 13 )]
+
+text = "The elevator is not working."
+
+[node name="Text1" parent="Speech" instance=ExtResource( 13 )]
+
+text = "Needs energy."
+
 [connection signal="exit_room" from="CorridorDoor" to="." method="exit_room"]
 
 [connection signal="character_exited" from="Elevator" to="." method="exit_room"]
 
 [connection signal="exit_room" from="MaintenanceDoor" to="." method="exit_room"]
+
+[connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
 
 
