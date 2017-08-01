@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=1]
+[gd_scene load_steps=44 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -62,7 +62,24 @@ extents = Vector2( 100, 100 )
 custom_solver_bias = 0.0
 extents = Vector2( 100, 100 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends StreamPlayer
+
+onready var bgm = get_node(\"/root/Main/StreamPlayer\")
+onready var tween = get_node(\"Tween\")
+onready var timer = get_node(\"Timer\")
+
+func _ready():
+	tween.interpolate_method(bgm, \"set_volume\", bgm.get_volume(), 0, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.start()
+	yield(tween, \"tween_complete\")
+	timer.start()
+	yield(timer, \"timeout\")
+	play()
+"
+
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 50, 50 )
@@ -692,10 +709,25 @@ stream/stream = ExtResource( 33 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 10.0
-stream/autoplay = true
+stream/autoplay = false
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
+script/script = SubResource( 6 )
+
+[node name="Tween" type="Tween" parent="StreamPlayer"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Timer" type="Timer" parent="StreamPlayer"]
+
+process_mode = 1
+wait_time = 15.0
+one_shot = true
+autostart = false
 
 [node name="TriggerArea" parent="." instance=ExtResource( 34 )]
 
@@ -703,7 +735,7 @@ transform/pos = Vector2( 4366.87, -145.773 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
