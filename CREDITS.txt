@@ -34,7 +34,7 @@ Developed with Godot 2.1.3, licensed under the MIT License
 ## Fonts
 
 Under Open Font License:
-+ Digital7
++ Digital7, by Sizenko Alexander
 
 Under Apache License 2.0:
 + SpecialElite, by Astigmatic
