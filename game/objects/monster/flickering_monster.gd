@@ -1,6 +1,7 @@
 extends "res://objects/body.gd"
 
-const CHASE_DIST = 640
+const CHASE_DIST = 800
+const BASE_THRESHOLD = 0.4
 
 onready var sprite = get_node("Sprite")
 onready var sfx = get_node("SFX")
@@ -26,9 +27,9 @@ func _fixed_process(delta):
 	if character != null:
 		var dir = character.get_pos() - get_pos()
 		var dist = dir.length()
-		intensity = max(0, (640 - dist)/640)*(1.0 - character.get_light_percent()/2.0)
-		if dist <= CHASE_DIST and intensity > 0.4:
-			push(dir.normalized()*5)
+		intensity = max(BASE_THRESHOLD, (CHASE_DIST - dist)/CHASE_DIST)*(1.0 - character.get_light_percent()/2.0)
+		if dist <= CHASE_DIST and intensity >= BASE_THRESHOLD:
+			push(dir.normalized()*1.5)
 
 func _process(delta):
 	flicker_time += delta
