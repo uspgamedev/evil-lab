@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
+
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://hud/hud.tscn" type="PackedScene" id=2]
 [ext_resource path="res://room/ambiente.ogg" type="AudioStream" id=3]
 [ext_resource path="res://objects/power_cell_data/power_cell_data.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/door/porta2.smp" type="Sample" id=6]
+[ext_resource path="res://objects/monster/monster_management.gd" type="Script" id=7]
+
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends Node
@@ -15,7 +18,7 @@ func go():
 	door.unlock()
 "
 
-[sub_resource type="SampleLibrary" id=3]
+[sub_resource type="SampleLibrary" id=2]
 
 
 [node name="Main" type="Node2D"]
@@ -23,6 +26,7 @@ func go():
 script/script = ExtResource( 1 )
 GAMEOVER_PATH = "res://splash/gameover.tscn"
 first_room = "hall2f"
+
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
@@ -73,6 +77,12 @@ script/script = SubResource( 1 )
 [node name="door_sfx" parent="." instance=ExtResource( 5 )]
 
 params/volume_db = 24.0
-config/samples = SubResource( 3 )
+config/samples = SubResource( 2 )
 sample = ExtResource( 6 )
+
+[node name="MonsterManagement" type="Node" parent="."]
+
+script/script = ExtResource( 7 )
+character = null
+
 

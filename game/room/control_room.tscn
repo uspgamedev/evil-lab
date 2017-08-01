@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://room/decoration/chair_1.tex" type="Texture" id=19]
 [ext_resource path="res://room/decoration/blood1.tex" type="Texture" id=20]
 [ext_resource path="res://objects/monster/crawler.tscn" type="PackedScene" id=21]
+[ext_resource path="res://room/spawn_range.gd" type="Script" id=22]
 
 [node name="ControlRoom" instance=ExtResource( 1 )]
 
@@ -334,14 +335,12 @@ texture = ExtResource( 11 )
 
 transform/pos = Vector2( -7.28021, 8.93487 )
 transform/rot = 153.113
-transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="Sprite2" type="Sprite" parent="Sprite 7"]
 
 transform/pos = Vector2( 23.8255, 16.9457 )
 transform/rot = 36.3743
-transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 
 [node name="Sprite3" type="Sprite" parent="Sprite 7"]
@@ -384,6 +383,13 @@ texture = ExtResource( 4 )
 [node name="Crawler" parent="." instance=ExtResource( 21 )]
 
 transform/pos = Vector2( -1136, 0 )
+
+[node name="SpawnRange" type="Node" parent="."]
+
+script/script = ExtResource( 22 )
+minimum = -700
+maximum = 550
+
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
 
