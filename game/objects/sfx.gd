@@ -6,4 +6,4 @@ func _ready():
 	get_sample_library().add_sample("default", sample)
 
 func go():
-	play("default")
+	return play("default")
