@@ -53,6 +53,8 @@ locked = false
 
 [node name="Speech" parent="." instance=ExtResource( 4 )]
 
+editor/display_folded = true
+
 [node name="Text" parent="Speech" instance=ExtResource( 5 )]
 
 text = "I locked the cafeteria door."
@@ -63,6 +65,7 @@ text = "Gotta turn off the lock in the power room to leave."
 
 [node name="TriggerArea" parent="." instance=ExtResource( 6 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 672, -128 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
@@ -73,6 +76,19 @@ _update_shape_index = 0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Speech1" parent="." instance=ExtResource( 4 )]
+
+editor/display_folded = true
+autostart = true
+
+[node name="Text" parent="Speech1" instance=ExtResource( 5 )]
+
+text = "Good thing I have this lamp."
+
+[node name="Text1" parent="Speech1" instance=ExtResource( 5 )]
+
+text = "Should protect me as long as I keep it charged."
 
 [node name="Sprite" type="Sprite" parent="."]
 
