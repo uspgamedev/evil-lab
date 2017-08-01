@@ -1,7 +1,7 @@
 extends "res://objects/body.gd"
 
 const CHASE_DIST = 360
-const SPEED_FACTOR = 2*10
+const SPEED_FACTOR = 2
 
 onready var sfx = get_node("SamplePlayer2D")
 onready var scream = get_node("SFX")

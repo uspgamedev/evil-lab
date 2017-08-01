@@ -28,7 +28,7 @@ func _fixed_process(delta):
 		var dist = dir.length()
 		intensity = max(0, (640 - dist)/640)*(1.0 - character.get_light_percent()/2.0)
 		if dist <= CHASE_DIST and intensity > 0.4:
-			push(dir.normalized()/2.0)
+			push(dir.normalized()*5)
 
 func _process(delta):
 	flicker_time += delta
