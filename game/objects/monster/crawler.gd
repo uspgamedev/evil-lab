@@ -4,12 +4,15 @@ const CHASE_DIST = 360
 const SPEED_FACTOR = 2*10
 
 onready var sfx = get_node("SamplePlayer2D")
+onready var scream = get_node("SFX")
 onready var timer = get_node("Timer")
 
 var character = null
 var sacrifice = false
 var direction = 1
 var target
+
+var scream_voice = -1
 
 func _ready():
 	set_fixed_process(true)
@@ -26,11 +29,18 @@ func _fixed_process(delta):
 			push(direction*Vector2(1,0)/SPEED_FACTOR)
 	elif sacrifice:
 		var pos = target.get_pos()
-		push((pos - get_pos()).normalized()/SPEED_FACTOR)
+		var dir = pos - get_pos()
+		push(dir.normalized()/SPEED_FACTOR)
+		if (dir.length_squared() < 40*40) and !target.is_emitting():
+			target.set_emitting(true)
+			scream_voice = scream.go()
+			#if scream.is_voice_active(scream_voice):
+			#	print("scream")	
 
 func start_sacrifice():
 	sacrifice = true
 	target = get_node("../Target")
+	get_node("../Block").set_layer_mask(1)
 
 func cry():
 	sfx.go()

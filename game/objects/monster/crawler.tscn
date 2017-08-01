@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://objects/body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/monster/crawler.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/sfx.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/monster/monstros2.smp" type="Sample" id=6]
 [ext_resource path="res://objects/collisionfix.gd" type="Script" id=7]
+[ext_resource path="res://objects/monster/scream.smp" type="Sample" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -129,6 +130,9 @@ points = Vector2Array( -80, -100, 80, -100, 80, 0, -80, 0 )
 custom_solver_bias = 0.0
 extents = Vector2( 60, 50 )
 
+[sub_resource type="SampleLibrary" id=8]
+
+
 [node name="Crawler" instance=ExtResource( 1 )]
 
 collision/layers = 4
@@ -190,6 +194,12 @@ shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 7 )
+
+[node name="SFX" parent="." instance=ExtResource( 5 )]
+
+params/attenuation/distance_exp = 0.615572
+config/samples = SubResource( 8 )
+sample = ExtResource( 8 )
 
 [connection signal="speed_changed" from="." to="Sprite/AnimationPlayer" method="track_movement"]
 
