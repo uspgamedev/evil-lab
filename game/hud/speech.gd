@@ -8,5 +8,5 @@ func _ready():
 	if autostart:
 		go()
 
-func go():
+func go(unused=null):
 	speech_label.queue_speech(self)

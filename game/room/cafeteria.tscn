@@ -63,7 +63,6 @@ text = "Gotta turn off the lock in the power room to leave."
 
 [node name="TriggerArea" parent="." instance=ExtResource( 6 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 672, -128 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]

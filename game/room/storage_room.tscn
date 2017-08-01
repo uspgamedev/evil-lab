@@ -24,6 +24,7 @@ transform/pos = Vector2( 480, 0 )
 transform/pos = Vector2( 0, -144 )
 target_room_name = "cafeteria"
 spawn_tag = "StorageDoor"
+locked = false
 
 [node name="Speech" parent="." instance=ExtResource( 3 )]
 
