@@ -131,7 +131,6 @@ spawn_tag = "CorridorDoor"
 
 [node name="OfficeDoor" parent="." instance=ExtResource( 5 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 720, -183 )
 power_cell_id = "CorridorOfficeDoor"
 threshold = 0.2
@@ -172,31 +171,6 @@ texture = ExtResource( 3 )
 transform/pos = Vector2( 57.0395, 196.375 )
 texture = ExtResource( 3 )
 flip_h = true
-
-[node name="Sprite 3" type="Sprite" parent="OfficeDoor"]
-
-transform/pos = Vector2( -35.0001, 143 )
-texture = ExtResource( 4 )
-
-[node name="Sprite7" type="Sprite" parent="OfficeDoor"]
-
-transform/pos = Vector2( 44.0001, 91.0001 )
-transform/rot = 64.277
-texture = ExtResource( 4 )
-
-[node name="Sprite8" type="Sprite" parent="OfficeDoor"]
-
-transform/pos = Vector2( -39.4219, -73.5337 )
-transform/rot = -33.1955
-transform/scale = Vector2( 1.71626, 1.71626 )
-texture = ExtResource( 4 )
-
-[node name="Sprite9" type="Sprite" parent="OfficeDoor"]
-
-transform/pos = Vector2( 47.923, -133.229 )
-transform/rot = 119.215
-transform/scale = Vector2( 1.44708, 1.44708 )
-texture = ExtResource( 4 )
 
 [node name="Hall1FDoor" parent="." instance=ExtResource( 2 )]
 
@@ -309,9 +283,9 @@ __meta__ = {
 
 [connection signal="exit_room" from="OfficeDoor" to="." method="exit_room"]
 
-[connection signal="opened" from="OfficeDoor" to="Spawn" method="spawn"]
-
 [connection signal="opened" from="OfficeDoor" to="KnockingTimer" method="stop"]
+
+[connection signal="opened" from="OfficeDoor" to="Spawn" method="spawn"]
 
 [connection signal="exit_room" from="Hall1FDoor" to="." method="exit_room"]
 
