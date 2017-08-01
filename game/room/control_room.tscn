@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=1]
+[gd_scene load_steps=29 format=1]
 
 [ext_resource path="res://room/basic.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/door/door.tscn" type="PackedScene" id=2]
@@ -32,6 +32,11 @@ custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 50 )
+
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 50, 50 )
@@ -457,6 +462,7 @@ _update_shape_index = 0
 
 [node name="TriggerArea" parent="." instance=ExtResource( 23 )]
 
+editor/display_folded = true
 transform/pos = Vector2( -720, -160 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
@@ -468,7 +474,23 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="TriggerArea1" parent="." instance=ExtResource( 23 )]
+
+editor/display_folded = true
+transform/pos = Vector2( -1136, -192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea1"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Speech" parent="." instance=ExtResource( 24 )]
+
+editor/display_folded = true
 
 [node name="Text" parent="Speech" instance=ExtResource( 25 )]
 
@@ -478,10 +500,24 @@ text = "It seems dangerous, but I need to access that power cell."
 
 text = "It powers the computer."
 
+[node name="Speech1" parent="." instance=ExtResource( 24 )]
+
+editor/display_folded = true
+
+[node name="Text" parent="Speech1" instance=ExtResource( 25 )]
+
+text = "Disgusting."
+
+[node name="Text1" parent="Speech1" instance=ExtResource( 25 )]
+
+text = "But now I can put an end to all this."
+
 [connection signal="exit_room" from="Hall2FDoor" to="." method="exit_room"]
 
 [connection signal="opened" from="Gate1" to="Crawler" method="start_sacrifice"]
 
 [connection signal="triggered" from="TriggerArea" to="Speech" method="go"]
+
+[connection signal="triggered" from="TriggerArea1" to="Speech1" method="go"]
 
 
