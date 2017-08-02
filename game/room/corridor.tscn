@@ -89,7 +89,7 @@ autostart = true
 
 [node name="Text1" parent="Speech3" instance=ExtResource( 3 )]
 
-text = "Sadly, they run out of power overtime."
+text = "Sadly, they run out of power over time."
 
 [node name="EntranceDoor" parent="." instance=ExtResource( 4 )]
 
