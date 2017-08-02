@@ -15,7 +15,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 275, 200 )
+extents = Vector2( 200, 200 )
 
 [sub_resource type="GDScript" id=2]
 
@@ -71,7 +71,6 @@ texture = ExtResource( 3 )
 
 [node name="TriggerArea" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, -208 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
