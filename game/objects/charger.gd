@@ -10,7 +10,6 @@ onready var idle = load('res://objects/wall_outlet_0_empty.tex')
 onready var charging = load('res://objects/wall_outlet_0_charging.tex')
 onready var player = null
 onready var label = get_node("Polygon2D/Label")
-onready var tween = get_node('Tween')
 
 var can_charge = true
 
