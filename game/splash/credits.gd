@@ -15,7 +15,7 @@ func _ready():
 			# fade in
 			block.set_opacity(0)
 			block.show()
-			tween.interpolate_method(block, "set_opacity", 0, 1, 2,
+			tween.interpolate_method(block, "set_opacity", 0, 1, 6,
 				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			tween.start()
 			yield(tween, "tween_complete")
@@ -23,7 +23,7 @@ func _ready():
 			timer.start()
 			yield(timer, "timeout")
 			# fade out
-			tween.interpolate_method(block, "set_opacity", 1, 0, 2,
+			tween.interpolate_method(block, "set_opacity", 1, 0, 6,
 					Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			tween.start()
 			yield(tween, "tween_complete")
